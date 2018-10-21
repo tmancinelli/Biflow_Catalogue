@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource
  * @ORM\Entity
  */
-class Work
+class Bibliography
 {
     /**
      * @var int The entity Id
@@ -26,50 +26,58 @@ class Work
     private $id;
 
     /**
-     * @var string The code of this work
+     * @var work The work this reference belongs to.
+     *
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="bibliographies")
+     */
+    public $work;
+
+    /**
+     * @var string The title of this reference.
      *
      * @ORM\Column
      * @Assert\NotBlank
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $code = '';
+    public $title;
 
     /**
-     * @var Creator The creator of this work
-     *
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
-     */
-    public $creator;
-
-    /**
-     * @var Expressions the list of the expressions for this work
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="work")
-     */
-    public $expressions;
-
-    /**
-     * @var Content the content of this work
+     * @var The author of the reference.
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $content = '';
+    public $author;
+
+    /**
+     * @var The date of this reference
+     * @ORM\Column(type="integer")
+     */
+    public $date;
+
+    /**
+     * @var The editor, the editor of this reference
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $editor = '';
+
+    /**
+     * @var Publisher of this reference.
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $publisher = '';
+
+    /**
+     * @var Name of the journal.
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $journal = '';
 
     /**
      * @var History the history of this work
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $history = '';
+    public $journalnumber = '';
 
-    /**
-	 * @var The bibliography of this work
-	 * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="work")
-     */
-    public $bibliographies;
-
-    public function __construct() {
-        $this->expressions = new ArrayCollection();
-        $this->bibliographies = new ArrayCollection();
-    }
-
+   
 
     public function getId(): int
     {

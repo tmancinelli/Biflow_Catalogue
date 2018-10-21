@@ -9,12 +9,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * This is the Material class.
+ * This is the Genre class.
  *
  * @ApiResource
  * @ORM\Entity
  */
-class Role
+class Genre
 {
     /**
      * @var int The entity Id
@@ -26,21 +26,20 @@ class Role
     private $id;
 
     /**
-     * @var string, The role.
+     * @var string, The genre
      *
      * @ORM\Column
      * @Assert\NotBlank
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $role = '';
+    public $genre = '';
 
     /**
-     * @var the expressions made by a person with this role.
-     *
-     * @ORM\OneToMany(targetEntity="ExpressionRolePerson", mappedBy="role")
+     * @var Expressions the list of the expressions for this genre
+     * @ORM\OneToMany(targetEntity="Expression", mappedBy="genre")
      */
     public $expressions;
-
+    
     public function __construct() {
         $this->expressions = new ArrayCollection();
     }

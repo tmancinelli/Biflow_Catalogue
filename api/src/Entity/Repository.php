@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource
  * @ORM\Entity
  */
-class Role
+class Repository
 {
     /**
      * @var int The entity Id
@@ -26,21 +26,20 @@ class Role
     private $id;
 
     /**
-     * @var string, The role.
+     * @var string The material
      *
      * @ORM\Column
      * @Assert\NotBlank
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $role = '';
+    public $repository = '';
 
     /**
-     * @var the expressions made by a person with this role.
-     *
-     * @ORM\OneToMany(targetEntity="ExpressionRolePerson", mappedBy="role")
+     * @var Expressions the list of the expressions for this repository
+     * @ORM\OneToMany(targetEntity="Expression", mappedBy="repository")
      */
     public $expressions;
-
+    
     public function __construct() {
         $this->expressions = new ArrayCollection();
     }

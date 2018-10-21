@@ -41,6 +41,45 @@ class Expression
      */
     public $work;
 
+     /**
+     * @var The city where the manuscript is
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $city;
+
+
+    /**
+     * @var The library whose the manuscript is preserved.
+     *
+     * @ORM\ManyToOne(targetEntity="Repository", inversedBy="expressions")
+     */
+    public $repository;
+
+    /**
+     * @var The city where the manuscript is
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $idno;
+
+    /**
+     * @var material The material whose the manuscript is made.
+     *
+     * @ORM\ManyToOne(targetEntity="Material", inversedBy="expressions")
+     */
+    public $material;
+
+    /**
+     * @var The number of the folios
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $cartaNumber;
+
+     /**
+     * @var The localitation of the folios
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $localisation;
+
     /**
      * @var Content the content of this expression
      * @ORM\Column(type="text", options={"default":""})
@@ -65,14 +104,6 @@ class Expression
      */
     public $explicit = '';
 
-
-    /**
-     * @var material The material whose the manuscript is made.
-     *
-     * @ORM\ManyToOne(targetEntity="Material", inversedBy="expressions")
-     */
-    public $material;
-
     /**
      * @var tradition The tradition whose the manuscript belogs to.
      *
@@ -85,14 +116,14 @@ class Expression
      *
      * @ORM\Column(type="float", options={"default":0})
      */
-    public $width;
+    public $width=0;
 
     /**
      * @var height The height of the manuscript.
      *
      * @ORM\Column(type="float", options={"default":0})
      */
-    public $height;
+    public $height=0;
 
     /**
      * @var people The people .
@@ -122,14 +153,24 @@ class Expression
     public $note = '';
 
     /**
-    TODO
-    public $cardsNumer;
-    public $localitation;
-    public $genre
-    public $textualTypology
-    public $date
-    public $note
+     * @var textualTypology whose the text is written.
+     *
+     * @ORM\ManyToOne(targetEntity="TextualTypology", inversedBy="expressions")
+     */
+    public $textualTypology;
 
+    /**
+     * @var the genre whose the text was written.
+     *
+     * @ORM\ManyToOne(targetEntity="Genre", inversedBy="expressions")
+     */
+    public $genre;
+
+    
+
+    /**
+    TODO
+    public $date(format)
     */
     
     public function __construct() {
