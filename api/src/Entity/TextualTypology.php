@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * This is the Material class.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("textualTypology")
  */
 class TextualTypology
 {
@@ -29,10 +31,10 @@ class TextualTypology
      * @var string The textual typology
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $textualTypology = '';
+    public $textualTypology;
 
     /**
      * @var Expressions the list of the expressions for this textual typology

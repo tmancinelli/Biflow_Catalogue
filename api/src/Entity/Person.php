@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * This is the Person class.
@@ -29,10 +30,10 @@ class Person
      * @var string The name
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $name = '';
+    public $name;
 
     /**
      * @var \DateInterface The date of birth

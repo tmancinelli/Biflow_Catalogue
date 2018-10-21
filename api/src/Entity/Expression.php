@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * This is the Expression class. The expression is a rapresentation of a work, in this case a single manuscript.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("catalogueNumber")
  */
 class Expression
 {
@@ -29,53 +31,49 @@ class Expression
      * @var string The  title.
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $title = '';
+    public $title;
 
     /**
      * @var work The work this expression belongs to.
-     *
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="expressions")
      */
     public $work;
 
-     /**
-     * @var The city where the manuscript is
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $city;
-
-
     /**
      * @var The library whose the manuscript is preserved.
-     *
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Repository", inversedBy="expressions")
      */
     public $repository;
 
     /**
-     * @var The city where the manuscript is
+     * @var The identifier number of the manuscript
+     * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $idno;
+    public $catalogueNumber;
 
     /**
      * @var material The material whose the manuscript is made.
-     *
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="expressions")
      */
     public $material;
 
     /**
      * @var The number of the folios
+     * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
      */
     public $cartaNumber;
 
-     /**
+    /**
      * @var The localitation of the folios
+     * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
      */
     public $localisation;
@@ -93,10 +91,10 @@ class Expression
     public $history = '';
 
     /**
-     * @var Inplicit the inplicit of this expression
+     * @var Incipit the incipit of this expression
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $inplicit = '';
+    public $incipit = '';
 
     /**
      * @var Explicit the explicit of this expression
@@ -106,28 +104,25 @@ class Expression
 
     /**
      * @var tradition The tradition whose the manuscript belogs to.
-     *
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Tradition", inversedBy="expressions")
      */
     public $tradition;
 
     /**
      * @var width The widht of the manuscript.
-     *
      * @ORM\Column(type="float", options={"default":0})
      */
     public $width=0;
 
     /**
      * @var height The height of the manuscript.
-     *
      * @ORM\Column(type="float", options={"default":0})
      */
     public $height=0;
 
     /**
-     * @var people The people .
-     *
+     * @var people The people.
      * @ORM\OneToMany(targetEntity="ExpressionRolePerson", mappedBy="expression")
      */
     public $people;

@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * This is the Material class.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("role")
  */
 class Role
 {
@@ -29,10 +31,10 @@ class Role
      * @var string, The role.
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $role = '';
+    public $role;
 
     /**
      * @var the expressions made by a person with this role.

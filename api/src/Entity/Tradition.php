@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Material class.
+ * This is the Tradition class. The tradition of a Expression.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("tradition")
  */
 class Tradition
 {
@@ -29,14 +31,13 @@ class Tradition
      * @var string The tradition's name.
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $tradition = '';
+    public $tradition;
 
     /**
      * @var expressions The list of expressions of this tradition.
-     *
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="tradition")
      */
     public $expressions;

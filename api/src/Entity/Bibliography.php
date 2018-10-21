@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * This is the Work class. The beginning of our world.
+ * This is the Bibliography class. References related to the work description.
  *
  * @ApiResource
  * @ORM\Entity
@@ -27,7 +27,7 @@ class Bibliography
 
     /**
      * @var work The work this reference belongs to.
-     *
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="bibliographies")
      */
     public $work;
@@ -36,25 +36,27 @@ class Bibliography
      * @var string The title of this reference.
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
     public $title;
 
     /**
      * @var The author of the reference.
-     * @ORM\Column(type="text", options={"default":""})
+     * @Assert\NotNull
+     * @ORM\Column(type="text")
      */
     public $author;
 
     /**
      * @var The date of this reference
+     * @Assert\NotNull
      * @ORM\Column(type="integer")
      */
     public $date;
 
     /**
-     * @var The editor, the editor of this reference
+     * @var The editor of this reference
      * @ORM\Column(type="text", options={"default":""})
      */
     public $editor = '';
@@ -72,10 +74,10 @@ class Bibliography
     public $journal = '';
 
     /**
-     * @var History the history of this work
+     * @var The issue of this journal
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $journalnumber = '';
+    public $journalNumber = '';
 
    
 

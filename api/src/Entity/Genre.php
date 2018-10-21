@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * This is the Genre class.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("genre")
  */
 class Genre
 {
@@ -29,10 +31,10 @@ class Genre
      * @var string, The genre
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $genre = '';
+    public $genre;
 
     /**
      * @var Expressions the list of the expressions for this genre

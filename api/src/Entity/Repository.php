@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Material class.
+ * This is the Repository class, which is the library where the manuscript is preserved.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("repository")
  */
 class Repository
 {
@@ -26,13 +28,20 @@ class Repository
     private $id;
 
     /**
-     * @var string The material
+     * @var string The repository which is the library where the manuscript is preserved.
      *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $repository = '';
+    public $repository;
+
+    /**
+     * @var The city where the repository is
+     * @Assert\NotNull
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $city;
 
     /**
      * @var Expressions the list of the expressions for this repository

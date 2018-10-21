@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * This is the Work class. The beginning of our world.
  *
  * @ApiResource
  * @ORM\Entity
+ * @UniqueEntity("code")
  */
 class Work
 {
@@ -27,16 +29,15 @@ class Work
 
     /**
      * @var string The code of this work
-     *
      * @ORM\Column
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
     public $code = '';
 
     /**
      * @var Creator The creator of this work
-     *
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
      */
     public $creator;
