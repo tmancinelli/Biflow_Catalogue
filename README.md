@@ -4,6 +4,7 @@ FRBR and TEI model
 
 My notes: working in progress of Biflow catalogue model, which will be described in detail once it is refined.
 
+```
 <?xml version="1.0" encoding="utf-8" ?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:ns0="http://purl.org/vocab/frbr/core#"
@@ -110,3 +111,4 @@ My notes: working in progress of Biflow catalogue model, which will be described
   </ns0:Manifestation>
 
 </rdf:RDF>
+```
