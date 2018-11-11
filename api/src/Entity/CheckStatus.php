@@ -10,13 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Material class.
+ * This is the Check Status class.
  *
  * @ApiResource
  * @ORM\Entity
- * @UniqueEntity("role")
+ * @UniqueEntity("checkStatus")
  */
-class Role
+class CheckStatus
 {
     /**
      * @var int The entity Id
@@ -28,23 +28,22 @@ class Role
     private $id;
 
     /**
-     * @var string, The role.
+     * @var string The check status
      *
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $role;
+    public $checkStatus;
 
     /**
-     * @var the expressions made by a person with this role.
-     *
-     * @ORM\OneToMany(targetEntity="ExpressionRolePerson", mappedBy="role")
+     * @var Manuscripts the list of the manuscripts for this check status
+     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="checkStatus")
      */
-    public $expressions;
-
+    public $manuscripts;
+    
     public function __construct() {
-        $this->expressions = new ArrayCollection();
+        $this->manuscripts = new ArrayCollection();
     }
 
     public function getId(): int

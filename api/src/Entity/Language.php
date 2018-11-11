@@ -10,13 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Tradition class. The tradition of a Expression.
+ * This is the Language class. The language of a Expression.
  *
  * @ApiResource
  * @ORM\Entity
- * @UniqueEntity("tradition")
+ * @UniqueEntity("language")
  */
-class Tradition
+class Language
 {
     /**
      * @var int The entity Id
@@ -28,17 +28,17 @@ class Tradition
     private $id;
 
     /**
-     * @var string The tradition's name.
+     * @var string The language
      *
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $tradition;
+    public $language;
 
     /**
      * @var expressions The list of expressions of this tradition.
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="tradition")
+     * @ORM\OneToMany(targetEntity="Expression", mappedBy="language")
      */
     public $expressions;
 

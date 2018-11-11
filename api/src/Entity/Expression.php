@@ -10,11 +10,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Expression class. The expression is a rapresentation of a work, in this case a single manuscript.
+ * This is the Expression class. The expression is a rapresentation of a work.
  *
  * @ApiResource
  * @ORM\Entity
- * @UniqueEntity("catalogueNumber")
  */
 class Expression
 {
@@ -27,14 +26,6 @@ class Expression
      */
     private $id;
 
-    /**
-     * @var string The  title.
-     *
-     * @ORM\Column
-     * @Assert\NotNull
-     * @ApiProperty(iri="http://schema.org/name")
-     */
-    public $title;
 
     /**
      * @var work The work this expression belongs to.
@@ -44,51 +35,18 @@ class Expression
     public $work;
 
     /**
-     * @var The library whose the manuscript is preserved.
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Repository", inversedBy="expressions")
+     * @var Translator The translator of this work, if any
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="translations")
      */
-    public $repository;
+    public $translator;
 
     /**
-     * @var The identifier number of the manuscript
-     * @Assert\NotNull
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $catalogueNumber;
-
-    /**
-     * @var material The material whose the manuscript is made.
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Material", inversedBy="expressions")
-     */
-    public $material;
-
-    /**
-     * @var The number of the folios
+     * @var Title the title of this expression
      * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
      */
-    public $cartaNumber;
-
-    /**
-     * @var The localitation of the folios
-     * @Assert\NotNull
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $localisation;
-
-    /**
-     * @var Content the content of this expression
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $content = '';
-
-    /**
-     * @var History the history of this expression
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $history = '';
+    public $title = '';
 
     /**
      * @var Incipit the incipit of this expression
@@ -103,32 +61,18 @@ class Expression
     public $explicit = '';
 
     /**
-     * @var tradition The tradition whose the manuscript belogs to.
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Tradition", inversedBy="expressions")
+     * @var Textual History the history of the text of this expression. It can also be the arrival of the test if this is not a top-level expression.
+     * @ORM\Column(type="text", options={"default":""})
      */
-    public $tradition;
+    public $textualHistory = '';
+    /**
+     * @var ManuscriptTradition the tradition of the manuscripts for this expression
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $manuscriptTradition = '';
 
     /**
-     * @var width The widht of the manuscript.
-     * @ORM\Column(type="float", options={"default":0})
-     */
-    public $width=0;
-
-    /**
-     * @var height The height of the manuscript.
-     * @ORM\Column(type="float", options={"default":0})
-     */
-    public $height=0;
-
-    /**
-     * @var people The people.
-     * @ORM\OneToMany(targetEntity="ExpressionRolePerson", mappedBy="expression")
-     */
-    public $people;
-
-    /**
-     * @var derivedFrom The derivedFrom is a relation between manuscripts.
+     * @var derivedFrom Ogni traduzione deriva da una espressione precedente. Se questa non esiste, vuol dire che l'espressione e' la prima della 'catena di espressioni'. La possiamo vedere come la prima espressione di un lavoro, anche se possono esserci tante "prime" espressioni di un lavoro... (da espandere).
      *
      * @ORM\ManyToOne(targetEntity="Expression", inversedBy="derivedExpessions")
      */
@@ -142,10 +86,10 @@ class Expression
     public $derivedExpressions;
 
      /**
-     * @var Note the note of this expression
+     * @var History of thef the note of this expression
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $note = '';
+    public $editionHistory = '';
 
     /**
      * @var textualTypology whose the text is written.
@@ -155,13 +99,31 @@ class Expression
     public $textualTypology;
 
     /**
-     * @var the genre whose the text was written.
-     *
-     * @ORM\ManyToOne(targetEntity="Genre", inversedBy="expressions")
+     * @var the language whose the text was written.
+     * @Assert\NotNull
+     * @ORM\ManyToOne(targetEntity="Language", inversedBy="expressions")
      */
-    public $genre;
+    public $language;
 
-    
+    /**
+	 * @var The bibliography of this expressions
+	 * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="expressions")
+     */
+    public $bibliographies;
+
+    /**
+     * @var Manuscripts[] manuscripts
+     * 
+     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="expression")
+     */
+    public $manuscripts;
+
+    /**
+     * @var Editions[] editions
+     * 
+     * @ORM\OneToMany(targetEntity="Edition", mappedBy="expression")
+     */
+    public $editions;
 
     /**
     TODO
@@ -170,7 +132,8 @@ class Expression
     
     public function __construct() {
         $this->derivedExpressions = new ArrayCollection();
-        $this->people = new ArrayCollection();
+        $this->manuscripts = new ArrayCollection();
+        $this->editions = new ArrayCollection();
     }
 
     public function getId(): int

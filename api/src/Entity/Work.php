@@ -36,17 +36,11 @@ class Work
     public $code = '';
 
     /**
-     * @var Creator The creator of this work
+     * @var Author The author of this work
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
      */
-    public $creator;
-
-    /**
-     * @var Expressions the list of the expressions for this work
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="work")
-     */
-    public $expressions;
+    public $author;
 
     /**
      * @var Content the content of this work
@@ -55,20 +49,26 @@ class Work
     public $content = '';
 
     /**
-     * @var History the history of this work
+     * @var Other Translations the history of the translations of this work. TBD
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $history = '';
+    public $otherTranslations = '';
 
     /**
-	 * @var The bibliography of this work
-	 * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="work")
+     * @var the genres whose the text was written.
+     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="work")
      */
-    public $bibliographies;
+    public $genres;
+
+    /**
+     * @var Expressions the list of the expressions for this work
+     * @ORM\OneToMany(targetEntity="Expression", mappedBy="work")
+     */
+    public $expressions;
 
     public function __construct() {
         $this->expressions = new ArrayCollection();
-        $this->bibliographies = new ArrayCollection();
+        $this->genres = new ArrayCollection();
     }
 
 

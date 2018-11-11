@@ -37,13 +37,13 @@ class Material
     public $material;
 
     /**
-     * @var Expressions the list of the expressions for this material
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="material")
+     * @var Manuscripts the list of the manuscripts for this material
+     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="material")
      */
-    public $expressions;
+    public $manuscripts;
     
     public function __construct() {
-        $this->expressions = new ArrayCollection();
+        $this->manuscripts = new ArrayCollection();
     }
 
     public function getId(): int

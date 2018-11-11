@@ -37,13 +37,13 @@ class Genre
     public $genre;
 
     /**
-     * @var Expressions the list of the expressions for this genre
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="genre")
+     * @var Works the list of the works for this genre
+     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="genre")
      */
-    public $expressions;
+    public $works;
     
     public function __construct() {
-        $this->expressions = new ArrayCollection();
+        $this->works = new ArrayCollection();
     }
 
     public function getId(): int

@@ -10,13 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Material class.
+ * Relationship between Genre and Work.
  *
  * @ApiResource
  * @ORM\Entity
- * @UniqueEntity(fields = {"expression", "role", "person"})
  */
-class ExpressionRolePerson
+class WorkGenre
 {
     /**
      * @var int The entity Id
@@ -26,21 +25,18 @@ class ExpressionRolePerson
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    /**
+     * @var The work
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="genres")
+     */
+    public $work;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="people")
+     * @var The genre
+     * @ORM\ManyToOne(targetEntity="Genre", inversedBy="works")
      */
-    public $expression;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Role", inversedBy="expressions")
-     */
-    public $role;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="roles")
-     */
-    public $person;
+    public $genre;
 
     public function getId(): int
     {

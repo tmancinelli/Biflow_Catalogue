@@ -7,14 +7,15 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Bibliography class. References related to the expression.
+ * This is the Modern edition class.
  *
  * @ApiResource
  * @ORM\Entity
  */
-class Bibliography
+class Edition
 {
     /**
      * @var int The entity Id
@@ -26,14 +27,14 @@ class Bibliography
     private $id;
 
     /**
-     * @var expression The expression this reference belongs to.
+     * @var expression The expression this manuscript belongs to.
      * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="bibliographies")
+     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="editions")
      */
-    public $expressions;
+    public $expression;
 
     /**
-     * @var string The title of this reference.
+     * @var string The title of this edition.
      *
      * @ORM\Column
      * @Assert\NotNull
@@ -42,47 +43,32 @@ class Bibliography
     public $title;
 
     /**
-     * @var The author of the reference.
+     * @var The editor of this edition.
      * @Assert\NotNull
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", options={"default":""})
      */
-    public $author;
+    public $editor = '';
 
     /**
-     * @var The date of this reference
+     * @var The date of this edition.
      * @Assert\NotNull
      * @ORM\Column(type="integer")
      */
     public $date;
 
     /**
-     * @var The editor of this reference
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $editor = '';
-
-    /**
-     * @var Publisher of this reference.
+     * @var Publisher of this edition.
+     * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
      */
     public $publisher = '';
 
     /**
-     * @var Name of the journal.
+     * @var Note the note of this edition
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $journal = '';
-
-    /**
-     * @var The issue of this journal
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $journalNumber = '';
-
-    public function __construct() {
-        $this->expressions = new ArrayCollection();
-    }   
-
+    public $note = '';
+  
     public function getId(): int
     {
         return $this->id;

@@ -52,20 +52,28 @@ class Person
     /**
      * @var Works[] Created works
      * 
-     * @ORM\OneToMany(targetEntity="Work", mappedBy="creator")
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="author")
      */
     public $works;
 
     /**
-     * @var Roles The role of a person.
-     *
-     * @ORM\OneToMany(targetEntity="ExpressionRolePerson", mappedBy="person")
+     * @var Translations[] Translated expressions
+     * 
+     * @ORM\OneToMany(targetEntity="Expression", mappedBy="translator")
      */
-    public $roles;
+    public $translations;
+
+    /**
+     * @var Codices[] Manuscript codices
+     * 
+     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="copyist")
+     */
+    public $codices;
 
     public function __construct() {
         $this->works = new ArrayCollection();
-        $this->roles = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->codices = new ArrayCollection();
     }
 
     public function getId(): int
