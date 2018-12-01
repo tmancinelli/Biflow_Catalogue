@@ -14,13 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  *     collectionOperations={
  *         "get",
- *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
- *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
- *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"}
  *     },
  *      itemOperations={
  *         "get",
- *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
  *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
  *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
  *     }
