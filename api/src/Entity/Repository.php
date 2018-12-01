@@ -12,10 +12,24 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * This is the Repository class, which is the library where the manuscript is preserved.
  *
- * @ApiResource
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     },
+ *      itemOperations={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     }
+ * )
  * @ORM\Entity
  * @UniqueEntity("repository")
  */
+
 class Repository
 {
     /**

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Work class. The beginning of our world.
+ * This is the Nickname class.
  *
  * @ApiResource(
  *     collectionOperations={
@@ -27,9 +27,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("code")
  */
-class Work
+class Nickname
 {
     /**
      * @var int The entity Id
@@ -41,49 +40,20 @@ class Work
     private $id;
 
     /**
-     * @var string The code of this work
+     * @var string The nickname
+     *
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $code = '';
+    public $nickname;
 
     /**
-     * @var Author The author of this work
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
+     * @var The person who has this nickname
+     * 
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="nicknames")
      */
-    public $author;
-
-    /**
-     * @var Content the content of this work
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $content = '';
-
-    /**
-     * @var Other Translations the history of the translations of this work. TBD
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $otherTranslations = '';
-
-    /**
-     * @var the genres whose the text was written.
-     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="work")
-     */
-    public $genres;
-
-    /**
-     * @var Expressions the list of the expressions for this work
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="work")
-     */
-    public $expressions;
-
-    public function __construct() {
-        $this->expressions = new ArrayCollection();
-        $this->genres = new ArrayCollection();
-    }
-
+    public $person;
 
     public function getId(): int
     {

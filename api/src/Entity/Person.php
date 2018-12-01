@@ -12,7 +12,20 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * This is the Person class.
  *
- * @ApiResource
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     },
+ *      itemOperations={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     }
+ * )
  * @ORM\Entity
  */
 class Person
@@ -70,10 +83,18 @@ class Person
      */
     public $codices;
 
+    /**
+     * @var Nicknames[] the nicknames for this person
+     *
+     * @ORM\OneToMany(targetEntity="Nickname", mappedBy="person")
+     */
+    public $nicknames;
+
     public function __construct() {
         $this->works = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->codices = new ArrayCollection();
+        $this->nicknames = new ArrayCollection();
     }
 
     public function getId(): int

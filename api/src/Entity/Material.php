@@ -12,7 +12,20 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * This is the Material class.
  *
- * @ApiResource
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     },
+ *      itemOperations={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     }
+ * )
  * @ORM\Entity
  * @UniqueEntity("material")
  */
