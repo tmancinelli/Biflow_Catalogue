@@ -129,13 +129,6 @@ class Expression
     public $manuscripts;
 
     /**
-     * @var Editions[] editions
-     * 
-     * @ORM\OneToMany(targetEntity="Edition", mappedBy="expression")
-     */
-    public $editions;
-
-    /**
     TODO
     public $date(format)
     */
