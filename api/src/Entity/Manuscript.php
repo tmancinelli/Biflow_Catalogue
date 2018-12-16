@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints\RangeDate;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -97,6 +98,14 @@ class Manuscript
      * @ORM\Column(type="float", options={"default":0})
      */
     public $height=0;
+
+    /**
+      * @var \DateInterface The date of the manuscript
+      *
+      * @RangeDate
+      * @ORM\Column(type="string")
+      */
+    public $dateManuscript;
 
     /**
      * @var checked in loco, on internet or not yet checked.

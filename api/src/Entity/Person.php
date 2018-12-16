@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints\RangeDate;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -48,14 +49,16 @@ class Person
     /**
      * @var \DateInterface The date of birth
      *
-     * @ORM\Column(type="date_immutable")
+     * @RangeDate
+     * @ORM\Column(type="string")
      */
     public $dateBirth;
 
      /**
       * @var \DateInterface The date of death
       *
-      * @ORM\Column(type="date_immutable")
+      * @RangeDate
+      * @ORM\Column(type="string")
       */
     public $dateDeath;
 
