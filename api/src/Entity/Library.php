@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Repository class, which is the library where the manuscript is preserved.
+ * This is the Library class.
  *
  * @ApiResource(
  *     collectionOperations={
@@ -24,10 +24,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("repository")
+ * @UniqueEntity("library")
  */
-
-class Repository
+class Library
 {
     /**
      * @var int The entity Id
@@ -39,24 +38,33 @@ class Repository
     private $id;
 
     /**
-     * @var string The repository which is the library where the manuscript is preserved.
+     * @var string The city where the library is
+     *
+     * @ORM\Column
+     * @Assert\NotNull
+     */
+    public $city;
+
+    /**
+     * @var string The library name
      *
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $repository;
+    public $libraryName;
 
     /**
-     * @var The city where the repository is
+     * @var string The library identification number
+     *
+     * @ORM\Column
      * @Assert\NotNull
-     * @ORM\Column(type="text", options={"default":""})
      */
-    public $city;
+    public $libraryID;
 
     /**
-     * @var Manuscripts the list of the manuscripts for this repository
-     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="repository")
+     * @var Manuscripts the list of the manuscripts in this library
+     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="library")
      */
     public $manuscripts;
     

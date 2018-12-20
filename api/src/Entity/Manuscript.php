@@ -38,11 +38,6 @@ class Manuscript
      */
     private $id;
 
-    /**
-     * @var Copyist The copyist
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="codices")
-     */
-    public $copyist;
 
     /**
      * @var expression The expression this manuscript belongs to.
@@ -54,9 +49,9 @@ class Manuscript
     /**
      * @var The library whose the manuscript is preserved.
      * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Repository", inversedBy="manuscripts")
+     * @ORM\ManyToOne(targetEntity="Library", inversedBy="manuscripts")
      */
-    public $repository;
+    public $library;
 
     /**
      * @var The identifier number of the manuscript
@@ -64,7 +59,15 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $catalogueNumber;
+    public $shelfMark;
+
+    /**
+      * @var The date of the manuscript
+      *
+      * @RangeDate
+      * @ORM\Column(type="string", options={"default":""})
+      */
+    public $date;
 
     /**
      * @var material The material whose the manuscript is made.
@@ -72,20 +75,6 @@ class Manuscript
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="manuscripts")
      */
     public $material;
-
-    /**
-     * @var The number of the folios
-     * @Assert\NotNull
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $cartaNumber;
-
-    /**
-     * @var The localitation of the folios
-     * @Assert\NotNull
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $localisation;
 
     /**
      * @var width The widht of the manuscript.
@@ -100,19 +89,17 @@ class Manuscript
     public $height=0;
 
     /**
-      * @var \DateInterface The date of the manuscript
-      *
-      * @RangeDate
-      * @ORM\Column(type="string")
-      */
-    public $dateManuscript;
-
-    /**
      * @var checked in loco, on internet or not yet checked.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="CheckStatus", inversedBy="manuscripts")
      */
     public $checkStatus;
+
+    /**
+     * @var Copyist The copyist
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="codices")
+     */
+    public $copyist;
 
     /**
      * @var Note the note of this manuscript

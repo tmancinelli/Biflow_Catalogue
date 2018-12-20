@@ -50,7 +50,7 @@ class Person
      * @var \DateInterface The date of birth
      *
      * @RangeDate
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", options={"default":""})
      */
     public $dateBirth;
 
@@ -58,7 +58,7 @@ class Person
       * @var \DateInterface The date of death
       *
       * @RangeDate
-      * @ORM\Column(type="string")
+      * @ORM\Column(type="string", options={"default":""})
       */
     public $dateDeath;
 
