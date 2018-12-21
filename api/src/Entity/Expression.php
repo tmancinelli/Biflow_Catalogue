@@ -84,7 +84,7 @@ class Expression
     /**
      * @var derivedFrom Ogni traduzione deriva da una espressione precedente. Se questa non esiste, vuol dire che l'espressione e' la prima della 'catena di espressioni'. La possiamo vedere come la prima espressione di un lavoro, anche se possono esserci tante "prime" espressioni di un lavoro... (da espandere).
      *
-     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="derivedExpessions")
+     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="derivedExpressions")
      */
     public $derivedFrom;
 
