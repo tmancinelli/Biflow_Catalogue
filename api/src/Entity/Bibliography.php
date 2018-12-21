@@ -59,6 +59,20 @@ class Bibliography
     public $author;
 
     /**
+     * @var The editor of this reference
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $editor = '';
+
+    /**
+     * @var string The city where the library is
+     *
+     * @ORM\Column
+     * @Assert\NotNull
+     */
+    public $place;
+
+    /**
      * @var The date of this reference
      * @Assert\NotNull
      * @ORM\Column(type="integer")
@@ -66,22 +80,24 @@ class Bibliography
     public $date;
 
     /**
-     * @var The editor of this reference
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $editor = '';
-
-    /**
      * @var Publisher of this reference.
      * @ORM\Column(type="text", options={"default":""})
      */
     public $publisher = '';
+
 
     /**
      * @var Name of the journal.
      * @ORM\Column(type="text", options={"default":""})
      */
     public $journal = '';
+
+    /**
+     * @var codeBibl The code linked to the reference.
+     * @Assert\NotNull
+     * @ORM\ManyToOne(targetEntity="CodeBibl", inversedBy="bibliography")
+     */
+    public $codeBibl;
 
     /**
      * @var The issue of this journal
