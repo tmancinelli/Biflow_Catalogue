@@ -95,7 +95,7 @@ class Bibliography
     /**
      * @var codeBibl The code linked to the reference.
      * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="CodeBibl", inversedBy="bibliography")
+     * @ORM\ManyToOne(targetEntity="CodeBibl", inversedBy="bibliographies")
      */
     public $codeBibl;
 

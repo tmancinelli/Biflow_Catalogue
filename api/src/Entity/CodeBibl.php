@@ -24,7 +24,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("material")
+ * @UniqueEntity("codeBibl")
  */
 class CodeBibl
 {
@@ -50,7 +50,7 @@ class CodeBibl
      * @var Bibliography: the reference linked to this code
      * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="codeBibl")
      */
-    public $bibliography;
+    public $bibliographies;
     
     public function __construct() {
         $this->bibliography = new ArrayCollection();
