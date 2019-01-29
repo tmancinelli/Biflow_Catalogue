@@ -25,7 +25,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("catalogueNumber")
+ * @UniqueEntity("shelfMark")
  */
 class Manuscript
 {
@@ -67,7 +67,7 @@ class Manuscript
       * @RangeDate
       * @ORM\Column(type="string", options={"default":""})
       */
-    public $date;
+    public $date = '';
 
     /**
      * @var material The material whose the manuscript is made.
@@ -87,6 +87,12 @@ class Manuscript
      * @ORM\Column(type="float", options={"default":0})
      */
     public $height=0;
+
+    /**
+     * @var Localisation the localisation of the text in this manuscript
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $localisation = '';
 
     /**
      * @var checked in loco, on internet or not yet checked.

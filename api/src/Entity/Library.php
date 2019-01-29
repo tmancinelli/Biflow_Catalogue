@@ -51,7 +51,6 @@ class Library
      *
      * @ORM\Column
      * @Assert\NotNull
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $libraryName;
 
@@ -60,6 +59,7 @@ class Library
      *
      * @ORM\Column
      * @Assert\NotNull
+     * @ApiProperty(iri="http://schema.org/name")
      */
     public $libraryID;
 
