@@ -47,11 +47,11 @@ class Genre
     public $genre;
 
     /**
-     * @var Works the list of the works for this genre
-     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="genre")
+     * @var Work the list of the works for this genre
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="genre")
      */
     public $works;
-    
+
     public function __construct() {
         $this->works = new ArrayCollection();
     }

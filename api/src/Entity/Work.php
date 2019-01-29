@@ -65,11 +65,12 @@ class Work
     public $otherTranslations = '';
 
     /**
-     * @var the genres whose the text was written.
-     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="work")
+     * @var Genre The genre of this work
+     * @Assert\NotNull
+     * @ORM\ManyToOne(targetEntity="Genre", inversedBy="works")
      */
-    public $genres;
-
+    public $genre;
+    
     /**
      * @var Expressions the list of the expressions for this work
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="work")
@@ -78,7 +79,6 @@ class Work
 
     public function __construct() {
         $this->expressions = new ArrayCollection();
-        $this->genres = new ArrayCollection();
     }
 
 
