@@ -43,6 +43,13 @@ class Bibliography
     public $expressions;
 
     /**
+     * @var The author of the reference.
+     * @Assert\NotNull
+     * @ORM\Column(type="text")
+     */
+    public $author;
+
+    /**
      * @var string The title of this reference.
      *
      * @ORM\Column
@@ -52,11 +59,12 @@ class Bibliography
     public $title;
 
     /**
-     * @var The author of the reference.
-     * @Assert\NotNull
-     * @ORM\Column(type="text")
+     * @var string The title of the chapter of this reference.
+     *
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
      */
-    public $author;
+    public $chapter = '';
 
     /**
      * @var The editor of this reference
@@ -66,11 +74,9 @@ class Bibliography
 
     /**
      * @var string The city where the library is
-     *
-     * @ORM\Column
-     * @Assert\NotNull
+     * @ORM\Column(type="text", options={"default":""})
      */
-    public $place;
+    public $place = '';
 
     /**
      * @var The date of this reference
@@ -84,7 +90,6 @@ class Bibliography
      * @ORM\Column(type="text", options={"default":""})
      */
     public $publisher = '';
-
 
     /**
      * @var Name of the journal.
