@@ -24,6 +24,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
+ * @UniqueEntity("code")
  */
 class Expression
 {
