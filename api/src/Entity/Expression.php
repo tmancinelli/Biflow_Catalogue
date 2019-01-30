@@ -36,6 +36,12 @@ class Expression
      */
     private $id;
 
+    /**
+     * @var string The code of this expression
+     * @ORM\Column(type="text", options={"default":""})
+     * @Assert\NotNull
+     */
+    public $code;
 
     /**
      * @var work The work this expression belongs to.
