@@ -25,7 +25,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\Entity
  * @UniqueEntity("libraryName")
- * @UniqueEntity("libraryID")
+ * @UniqueEntity("libraryId")
  */
 class Library
 {
@@ -61,7 +61,7 @@ class Library
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
      */
-    public $libraryID;
+    public $libraryId;
 
     /**
      * @var Manuscripts the list of the manuscripts in this library
