@@ -25,7 +25,7 @@ class RangeDateValidator extends ConstraintValidator
             throw new UnexpectedTypeException($value, 'string');
         }
 
-        if (!preg_match('/^(>\s*\d\d\d\d|<\s*\d\d\d\d|\d\d\d\d\s*<>\s*\d\d\d\d|\d\d-\d\d-\d\d\d\d|~\s*\d\d\d\d)$/', $value, $matches)) {
+        if (!preg_match('/^(>\s*\d\d\d\d|<\s*\d\d\d\d|\d\d\d\d\s*<>\s*\d\d\d\d|\d\d-\d\d-\d\d\d\d|~\s*\d\d\d\d|\d\d\d\d)$/', $value, $matches)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
