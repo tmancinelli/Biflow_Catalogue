@@ -62,7 +62,6 @@ class Bibliography
      * @var string The title of the chapter of this reference.
      *
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $chapter = '';
 

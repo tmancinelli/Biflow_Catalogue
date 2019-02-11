@@ -40,6 +40,7 @@ class Expression
     /**
      * @var string The code of this expression
      * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
      * @Assert\NotNull
      */
     public $code;
@@ -61,7 +62,6 @@ class Expression
      * @var Title the title of this expression
      * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $title = '';
 
