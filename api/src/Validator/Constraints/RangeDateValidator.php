@@ -7,6 +7,20 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+// Data range validator supports these types:
+// >1234
+// >~1234
+// <1234
+// <~1234
+// 1234<>2345
+// ~1234<>2345
+// 1234<>~2345
+// ~1234<>~2345
+// 01-01-1234
+// 01-1234
+// ~1234
+// 1234
+// Before and after ~, <, >, <> spaces are supported.
 class RangeDateValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
@@ -25,7 +39,7 @@ class RangeDateValidator extends ConstraintValidator
             throw new UnexpectedTypeException($value, 'string');
         }
 
-        if (!preg_match('/^(>\s*\d\d\d\d|<\s*\d\d\d\d|\d\d\d\d\s*<>\s*\d\d\d\d|\d\d-\d\d-\d\d\d\d|~\s*\d\d\d\d|\d\d\d\d)$/', $value, $matches)) {
+        if (!preg_match('/^(>\s*~?\s*\d\d\d\d|<\s*~?\s*\d\d\d\d|~?\s*\d\d\d\d\s*<>\s*~?\s*\d\d\d\d|\d\d-\d\d-\d\d\d\d|\d\d-\d\d\d\d|~\s*\d\d\d\d|\d\d\d\d)$/', $value, $matches)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
