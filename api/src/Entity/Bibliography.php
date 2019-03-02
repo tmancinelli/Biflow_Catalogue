@@ -109,6 +109,12 @@ class Bibliography
      */
     public $journalNumber = '';
 
+    /**
+     * @var The page numbers
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $pageNumber = '';
+
     public function __construct() {
         $this->expressions = new ArrayCollection();
     }   
