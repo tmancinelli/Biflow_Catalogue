@@ -77,6 +77,13 @@ class Work
      */
     public $expressions;
 
+    /**
+     * @var Editor The editor of this work
+     * @Assert\NotNull
+     * @ORM\ManyToOne(targetEntity="Editor", inversedBy="works")
+     */
+    public $editor;
+
     public function __construct() {
         $this->expressions = new ArrayCollection();
     }
