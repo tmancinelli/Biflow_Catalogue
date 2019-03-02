@@ -71,7 +71,6 @@ class Manuscript
 
     /**
      * @var material The material whose the manuscript is made.
-     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="manuscripts")
      */
     public $material;
