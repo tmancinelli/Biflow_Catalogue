@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Validator\Constraints\RangeDate;
 
 /**
  * This is the Expression class. The expression is a rapresentation of a work.
@@ -39,9 +40,10 @@ class Expression
 
     /**
      * @var string The code of this expression
+     *
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      * @Assert\NotNull
+     * @ApiProperty(iri="http://schema.org/name")
      */
     public $code;
 
@@ -62,6 +64,7 @@ class Expression
      * @var Title the title of this expression
      * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
      */
     public $title = '';
 
@@ -81,6 +84,15 @@ class Expression
      * @var Textual History the history of the text of this expression. It can also be the arrival of the test if this is not a top-level expression.
      * @ORM\Column(type="text", options={"default":""})
      */
+
+    /**
+     * @var the expression date
+     *
+     * @RangeDate
+     * @ORM\Column(type="string", options={"default":""})
+     */
+    public $date;
+
     public $textualHistory = '';
     /**
      * @var ManuscriptTradition the tradition of the manuscripts for this expression
