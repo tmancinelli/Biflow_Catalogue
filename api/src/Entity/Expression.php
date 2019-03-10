@@ -84,6 +84,7 @@ class Expression
      * @var Textual History the history of the text of this expression. It can also be the arrival of the test if this is not a top-level expression.
      * @ORM\Column(type="text", options={"default":""})
      */
+    public $textualHistory = '';
 
     /**
      * @var the expression date
@@ -93,7 +94,6 @@ class Expression
      */
     public $date;
 
-    public $textualHistory = '';
     /**
      * @var ManuscriptTradition the tradition of the manuscripts for this expression
      * @ORM\Column(type="text", options={"default":""})
