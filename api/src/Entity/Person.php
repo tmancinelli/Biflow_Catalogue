@@ -52,7 +52,7 @@ class Person
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
      */
-    public $dateBirth;
+    public $dateBirth = "";
 
      /**
       * @var \DateInterface The date of death
@@ -60,7 +60,7 @@ class Person
       * @RangeDate
       * @ORM\Column(type="string", options={"default":""})
       */
-    public $dateDeath;
+    public $dateDeath = "";
 
     /**
      * @var Works[] Created works

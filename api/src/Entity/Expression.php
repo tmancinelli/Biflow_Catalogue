@@ -92,7 +92,7 @@ class Expression
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
      */
-    public $date;
+    public $date = "";
 
     /**
      * @var ManuscriptTradition the tradition of the manuscripts for this expression
