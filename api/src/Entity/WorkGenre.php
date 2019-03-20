@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Entity;
-
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Genre class.
+ * Relationship between Genre and Work.
  *
  * @ApiResource(
  *     collectionOperations={
@@ -24,9 +22,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("genre")
+ * @UniqueEntity(fields={"genre", "work"})
  */
-class Genre
+class WorkGenre
 {
     /**
      * @var int The entity Id
@@ -36,26 +34,17 @@ class Genre
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
-     * @var string, The genre
-     *
-     * @ORM\Column
-     * @Assert\NotNull
-     * @ApiProperty(iri="http://schema.org/name")
+     * @var The work
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="genres")
+     */
+    public $work;
+    /**
+     * @var The genre
+     * @ORM\ManyToOne(targetEntity="Genre", inversedBy="works")
      */
     public $genre;
-
-    /**
-     * @var Works the list of the works for this genre
-     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="genre")
-     */
-    public $works;
-
-    public function __construct() {
-        $this->works = new ArrayCollection();
-    }
-
     public function getId(): int
     {
         return $this->id;
