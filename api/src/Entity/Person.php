@@ -77,9 +77,9 @@ class Person
     public $translations;
 
     /**
-     * @var Codices[] Manuscript codices
+     * @var Codices[] Localisation codices
      * 
-     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="copyist")
+     * @ORM\OneToMany(targetEntity="Localisation", mappedBy="copyist")
      */
     public $codices;
 

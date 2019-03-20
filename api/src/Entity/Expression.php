@@ -141,11 +141,11 @@ class Expression
     public $bibliographies;
 
     /**
-     * @var Manuscripts[] manuscripts
+     * @var Localisations[] localisation of this manuscript
      * 
-     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="expression")
+     * @ORM\OneToMany(targetEntity="Localisation", mappedBy="expression")
      */
-    public $manuscripts;
+    public $localisations;
 
     /**
     TODO
@@ -154,7 +154,7 @@ class Expression
     
     public function __construct() {
         $this->derivedExpressions = new ArrayCollection();
-        $this->manuscripts = new ArrayCollection();
+        $this->localisations = new ArrayCollection();
         $this->editions = new ArrayCollection();
     }
 

@@ -7,7 +7,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Validator\Constraints\RangeDate;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -38,14 +37,6 @@ class Manuscript
      */
     private $id;
 
-
-    /**
-     * @var expression The expression this manuscript belongs to.
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="manuscripts")
-     */
-    public $expression;
-
     /**
      * @var The library whose the manuscript is preserved.
      * @Assert\NotNull
@@ -60,14 +51,6 @@ class Manuscript
      * @ApiProperty(iri="http://schema.org/name")
      */
     public $shelfMark;
-
-    /**
-      * @var The date of the manuscript
-      *
-      * @RangeDate
-      * @ORM\Column(type="string", options={"default":""})
-      */
-    public $date = '';
 
     /**
      * @var material The material whose the manuscript is made.
@@ -88,12 +71,6 @@ class Manuscript
     public $height=0;
 
     /**
-     * @var Localisation the localisation of the text in this manuscript
-     * @ORM\Column(type="text", options={"default":""})
-     */
-    public $localisation = '';
-
-    /**
      * @var checked in loco, on internet or not yet checked.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="CheckStatus", inversedBy="manuscripts")
@@ -101,16 +78,21 @@ class Manuscript
     public $checkStatus;
 
     /**
-     * @var Copyist The copyist
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="codices")
-     */
-    public $copyist;
-
-    /**
      * @var Note the note of this manuscript
      * @ORM\Column(type="text", options={"default":""})
      */
     public $note = '';
+
+    /**
+     * @var Localisation the list of localisations for this manuscript
+     * @ORM\OneToMany(targetEntity="Localisation", mappedBy="manuscript")
+     */
+    public $localisations;
+
+    public function __construct() {
+        $this->localisations = new ArrayCollection();
+    }
+
   
     public function getId(): int
     {
