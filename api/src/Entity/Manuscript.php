@@ -59,6 +59,20 @@ class Manuscript
     public $material;
 
     /**
+     * @var Futher information about the physical descrition
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $physDescription;
+
+    /**
+     * @var Description of the history of the codex
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $history;
+
+    /**
      * @var width The widht of the manuscript.
      * @ORM\Column(type="float", options={"default":0})
      */
@@ -69,6 +83,34 @@ class Manuscript
      * @ORM\Column(type="float", options={"default":0})
      */
     public $height=0;
+
+    /**
+     * @var Information about the script
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $scriptDescription;
+
+    /**
+     * @var Futher information about the decoration descrition
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $decoDescription;
+
+    /**
+     * @var Description of this manuscript collation
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $collation;
+
+    /**
+     * @var Information about the binding descrition
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $binding;
 
     /**
      * @var checked in loco, on internet or not yet checked.
