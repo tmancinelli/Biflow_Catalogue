@@ -59,16 +59,14 @@ class Manuscript
     public $material;
 
     /**
-     * @var Futher information about the physical descrition
+     * @var Futher information about the physical description
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $physDescription;
 
     /**
      * @var Description of the history of the codex
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $history;
 
@@ -87,28 +85,24 @@ class Manuscript
     /**
      * @var Information about the script
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $scriptDescription;
 
     /**
      * @var Futher information about the decoration descrition
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $decoDescription;
 
     /**
      * @var Description of this manuscript collation
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
-    public $collation;
+    public $collationDescription;
 
     /**
-     * @var Information about the binding descrition
+     * @var Information about the binding description
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $binding;
 
