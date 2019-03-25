@@ -53,6 +53,12 @@ class Manuscript
     public $shelfMark;
 
     /**
+     * @var Information about the place expressed in the manuscript
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $place;
+
+    /**
      * @var material The material whose the manuscript is made.
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="manuscripts")
      */
@@ -105,6 +111,12 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      */
     public $binding;
+
+    /**
+     * @var Information about the ruling description
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $ruledLines;
 
     /**
      * @var checked in loco, on internet or not yet checked.
