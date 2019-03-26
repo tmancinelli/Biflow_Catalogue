@@ -56,7 +56,7 @@ class Manuscript
      * @var Information about the place expressed in the manuscript
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $place;
+    public $place = '';
 
     /**
      * @var material The material whose the manuscript is made.
@@ -68,13 +68,13 @@ class Manuscript
      * @var Futher information about the physical description
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $physDescription;
+    public $physDescription = '';
 
     /**
      * @var Description of the history of the codex
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $history;
+    public $history = '';
 
     /**
      * @var width The widht of the manuscript.
@@ -92,31 +92,31 @@ class Manuscript
      * @var Information about the script
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $scriptDescription;
+    public $scriptDescription = '';
 
     /**
      * @var Futher information about the decoration descrition
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $decoDescription;
+    public $decoDescription = '';
 
     /**
      * @var Description of this manuscript collation
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $collationDescription;
+    public $collationDescription = '';
 
     /**
      * @var Information about the binding description
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $binding;
+    public $binding = '';
 
     /**
      * @var Information about the ruling description
      * @ORM\Column(type="text", options={"default":""})
      */
-    public $ruledLines;
+    public $ruledLines = '';
 
     /**
      * @var checked in loco, on internet or not yet checked.
