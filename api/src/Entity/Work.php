@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Validator\Constraints\RangeDate;
 
 /**
  * This is the Work class. The beginning of our world.
@@ -82,6 +83,14 @@ class Work
      * @ORM\ManyToOne(targetEntity="Editor", inversedBy="works")
      */
     public $editor;
+
+    /**
+     * @var the work date
+     *
+     * @RangeDate
+     * @ORM\Column(type="string", options={"default":""})
+     */
+    public $date = "";
 
     public function __construct() {
         $this->expressions = new ArrayCollection();

@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Validator\Constraints\RangeDate;
 
 /**
  * This is the Manuscript class.
@@ -57,6 +58,14 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      */
     public $place = '';
+
+    /**
+     * @var the manuscript date
+     *
+     * @RangeDate
+     * @ORM\Column(type="string", options={"default":""})
+     */
+    public $date = "";
 
     /**
      * @var material The material whose the manuscript is made.
