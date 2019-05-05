@@ -91,16 +91,17 @@ class Work
     public $editor;
 
     /**
-     * @var the work date
+     * @var the creation of this work by the editor
      *
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
      */
-    public $date = "";
+    public $creationDate = "";
 
     public function __construct() {
         $this->expressions = new ArrayCollection();
         $this->genres = new ArrayCollection();
+        $this->attributions = new ArrayCollection();
     }
 
 

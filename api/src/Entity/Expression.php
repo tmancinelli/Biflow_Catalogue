@@ -162,6 +162,7 @@ class Expression
         $this->derivedExpressions = new ArrayCollection();
         $this->localisations = new ArrayCollection();
         $this->editions = new ArrayCollection();
+        $this->attributions = new ArrayCollection();
     }
 
     public function getId(): int
