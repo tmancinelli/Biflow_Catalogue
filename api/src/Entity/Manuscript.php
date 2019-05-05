@@ -25,7 +25,7 @@ use App\Validator\Constraints\RangeDate;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("shelfMark")
+ * @UniqueEntity(fields={"library", "shelfMark"})
  */
 class Manuscript
 {

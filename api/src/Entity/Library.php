@@ -24,7 +24,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("libraryName")
+ * @UniqueEntity(fields={"libraryName", "city"})
  * @UniqueEntity("libraryCode")
  */
 class Library

@@ -25,7 +25,7 @@ use App\Validator\Constraints\RangeDate;
  *     }
  * )
  * @ORM\Entity
- * @UniqueEntity("localisation")
+ * @UniqueEntity(fields={"localisation", "manuscript"})
  */
 class Localisation
 {
