@@ -61,6 +61,12 @@ class Expression
     public $translator;
 
     /**
+     * @var Other attributions for this expression
+     * @ORM\OneToMany(targetEntity="ExpressionAttribution", mappedBy="expression")
+     */
+    public $attributions;
+
+    /**
      * @var Title the title of this expression
      * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})

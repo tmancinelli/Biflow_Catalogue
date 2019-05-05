@@ -40,11 +40,13 @@ class WorkGenre
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="genres")
      */
     public $work;
+
     /**
      * @var The genre
      * @ORM\ManyToOne(targetEntity="Genre", inversedBy="works")
      */
     public $genre;
+
     public function getId(): int
     {
         return $this->id;

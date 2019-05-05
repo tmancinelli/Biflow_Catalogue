@@ -70,6 +70,18 @@ class Person
     public $works;
 
     /**
+     * @var Attributed Works the list of the works attributed to this person
+     * @ORM\OneToMany(targetEntity="WorkAttribution", mappedBy="attribution")
+     */
+    public $attributedWorks;
+
+    /**
+     * @var Attributed Expressions the list of the expressions attributed to this person
+     * @ORM\OneToMany(targetEntity="ExpressionAttribution", mappedBy="attribution")
+     */
+    public $attributedExpressions;
+
+    /**
      * @var Translations[] Translated expressions
      * 
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="translator")

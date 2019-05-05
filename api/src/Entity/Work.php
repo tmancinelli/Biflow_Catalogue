@@ -54,6 +54,12 @@ class Work
     public $author;
 
     /**
+     * @var Other attributions for this work
+     * @ORM\OneToMany(targetEntity="WorkAttribution", mappedBy="work")
+     */
+    public $attributions;
+
+    /**
      * @var Content the content of this work
      * @ORM\Column(type="text", options={"default":""})
      */
