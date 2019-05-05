@@ -22,7 +22,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *         "get",
  *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
  *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
- *     }
+ *     },
+ *     attributes={"order"={"name": "ASC"}}
  * )
  * @ORM\Entity
  */

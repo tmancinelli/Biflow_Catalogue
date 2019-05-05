@@ -20,7 +20,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "get",
  *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
  *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
- *     }
+ *     },
+ *     attributes={"order"={"title": "ASC"}}
  * )
  * @ORM\Entity
  */

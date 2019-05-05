@@ -22,7 +22,8 @@ use App\Validator\Constraints\RangeDate;
  *         "get",
  *         "put"={"access_control"="is_granted('ROLE_ADMIN')"},
  *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
- *     }
+ *     },
+ *     attributes={"order"={"code": "ASC"}}
  * )
  * @ORM\Entity
  * @UniqueEntity("code")
