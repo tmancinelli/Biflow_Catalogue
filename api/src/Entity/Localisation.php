@@ -44,12 +44,12 @@ class Localisation
      *
      * @ORM\Column
      * @Assert\NotNull
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $localisation;
 
     /**
      * @var the manuscript for this localisation
+     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Manuscript", inversedBy="localisations")
      */
     public $manuscript;

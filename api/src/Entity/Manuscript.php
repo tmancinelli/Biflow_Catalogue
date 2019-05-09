@@ -49,7 +49,6 @@ class Manuscript
      * @var The identifier number of the manuscript
      * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $shelfMark;
 
