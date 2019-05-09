@@ -73,6 +73,12 @@ class Work
     public $otherTranslations = '';
 
     /**
+     * @var Other Works related to this one
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $relatedWorks = '';
+
+    /**
      * @var the genres whose the text was written.
      * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="work")
      */
