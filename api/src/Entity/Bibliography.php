@@ -73,6 +73,12 @@ class Bibliography
     public $editor = '';
 
     /**
+     * @var Name of the volume.
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $volume = '';
+
+    /**
      * @var string The city where the library is
      * @ORM\Column(type="text", options={"default":""})
      */
