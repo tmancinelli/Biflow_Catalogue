@@ -37,11 +37,11 @@ class Bibliography
     private $id;
 
     /**
-     * @var expression The expression this reference belongs to.
+     * @var work The work this reference belongs to.
      * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="bibliographies")
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="bibliographies")
      */
-    public $expressions;
+    public $work;
 
     /**
      * @var The author of the reference.
@@ -115,10 +115,6 @@ class Bibliography
      * @ORM\Column(type="text", options={"default":""})
      */
     public $pageNumber = '';
-
-    public function __construct() {
-        $this->expressions = new ArrayCollection();
-    }   
 
     public function getId(): int
     {

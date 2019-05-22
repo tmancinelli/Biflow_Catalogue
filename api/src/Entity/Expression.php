@@ -142,12 +142,6 @@ class Expression
     public $language;
 
     /**
-	 * @var The bibliography of this expressions
-	 * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="expressions")
-     */
-    public $bibliographies;
-
-    /**
      * @var Localisations[] localisation of this manuscript
      * 
      * @ORM\OneToMany(targetEntity="Localisation", mappedBy="expression")

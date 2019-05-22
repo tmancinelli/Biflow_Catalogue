@@ -105,10 +105,17 @@ class Work
      */
     public $creationDate = "";
 
+    /**
+     * @var The bibliography of this work
+     * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="work")
+     */
+    public $bibliographies;
+
     public function __construct() {
         $this->expressions = new ArrayCollection();
         $this->genres = new ArrayCollection();
         $this->attributions = new ArrayCollection();
+        $this->bibliographies = new ArrayCollection();
     }
 
 
