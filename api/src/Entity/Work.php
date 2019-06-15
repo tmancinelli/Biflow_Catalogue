@@ -107,7 +107,7 @@ class Work
 
     /**
      * @var The bibliography of this work
-     * @ORM\OneToMany(targetEntity="Bibliography", mappedBy="work")
+     * @ORM\OneToMany(targetEntity="WorkBibliography", mappedBy="work")
      */
     public $bibliographies;
 

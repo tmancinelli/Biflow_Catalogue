@@ -38,10 +38,9 @@ class Bibliography
 
     /**
      * @var work The work this reference belongs to.
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="Work", inversedBy="bibliographies")
+     * @ORM\OneToMany(targetEntity="WorkBibliography", mappedBy="bibliography")
      */
-    public $work;
+    public $works;
 
     /**
      * @var The author of the reference.
@@ -125,5 +124,9 @@ class Bibliography
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function __construct() {
+        $this->works = new ArrayCollection();
     }
 }
