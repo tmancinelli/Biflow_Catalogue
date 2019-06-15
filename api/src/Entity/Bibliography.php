@@ -121,6 +121,13 @@ class Bibliography
      */
     public $pageNumber = '';
 
+    /**
+     * @var The url
+     * @ORM\Column(type="text", options={"default":""})
+     * @ApiProperty(iri="http://schema.org/url")
+     */
+    public $url = '';
+
     public function getId(): int
     {
         return $this->id;
