@@ -124,7 +124,7 @@ class Bibliography
     /**
      * @var The page numbers
      * @ORM\Column(type="text", options={"default":""})
-     *
+     */
     public $pageNumber = '';
 
     /**
