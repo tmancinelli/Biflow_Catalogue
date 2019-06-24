@@ -78,6 +78,12 @@ class Bibliography
     public $volume = '';
 
     /**
+     * @var Number of the volume.
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $volumeNumber = '';
+
+    /**
      * @var string The city where the library is
      * @ORM\Column(type="text", options={"default":""})
      */
@@ -118,7 +124,7 @@ class Bibliography
     /**
      * @var The page numbers
      * @ORM\Column(type="text", options={"default":""})
-     */
+     *
     public $pageNumber = '';
 
     /**
