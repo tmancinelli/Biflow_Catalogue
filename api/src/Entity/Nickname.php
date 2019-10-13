@@ -50,6 +50,7 @@ class Nickname
      * @var The person who has this nickname
      * 
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="nicknames")
+     * @ontology-range &biflow;Person
      */
     public $person;
 

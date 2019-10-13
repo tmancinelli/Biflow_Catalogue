@@ -52,12 +52,14 @@ class Expression
      * @var work The work this expression belongs to.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="expressions")
+     * @ontology-range &biflow;Work
      */
     public $work;
 
     /**
      * @var Translator The translator of this work, if any
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="translations")
+     * @ontology-range &biflow;Person
      */
     public $translator;
 
@@ -98,6 +100,7 @@ class Expression
      *
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
+     * @ontology-range &biflow;Date
      */
     public $date = "";
 
@@ -111,6 +114,7 @@ class Expression
      * @var derivedFrom Ogni traduzione deriva da una espressione precedente. Se questa non esiste, vuol dire che l'espressione e' la prima della 'catena di espressioni'. La possiamo vedere come la prima espressione di un lavoro, anche se possono esserci tante "prime" espressioni di un lavoro... (da espandere).
      *
      * @ORM\ManyToOne(targetEntity="Expression", inversedBy="derivedExpressions")
+     * @ontology-range &biflow;Expression
      */
     public $derivedFrom;
 
@@ -131,6 +135,7 @@ class Expression
      * @var textualTypology whose the text is written.
      *
      * @ORM\ManyToOne(targetEntity="TextualTypology", inversedBy="expressions")
+     * @ontology-range &biflow;TextualTypology
      */
     public $textualTypology;
 
@@ -138,6 +143,7 @@ class Expression
      * @var the language whose the text was written.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Language", inversedBy="expressions")
+     * @ontology-range &biflow;Language
      */
     public $language;
 

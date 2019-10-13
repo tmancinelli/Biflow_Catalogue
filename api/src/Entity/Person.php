@@ -13,6 +13,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * This is the Person class.
  *
+ * @ontology-equivalentClass &efrbroo;F10_Person
+ * @ontology-equivalentClass &current;E21_Person
  * @ApiResource(
  *     collectionOperations={
  *         "get",
@@ -52,15 +54,17 @@ class Person
      *
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
+     * @ontology-range &biflow;Date
      */
     public $dateBirth = "";
 
-     /**
-      * @var \DateInterface The date of death
-      *
-      * @RangeDate
-      * @ORM\Column(type="string", options={"default":""})
-      */
+    /**
+     * @var \DateInterface The date of death
+     *
+     * @RangeDate
+     * @ORM\Column(type="string", options={"default":""})
+     * @ontology-range &biflow;Date
+     */
     public $dateDeath = "";
 
     /**

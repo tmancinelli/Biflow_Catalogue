@@ -38,12 +38,14 @@ class WorkBibliography
     /**
      * @var The work
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="bibliographies")
+     * @ontology-range &biflow;Work
      */
     public $work;
 
     /**
      * @var The bibliography
      * @ORM\ManyToOne(targetEntity="Bibliography", inversedBy="works")
+     * @ontology-range &biflow;Bibliography
      */
     public $bibliography;
 

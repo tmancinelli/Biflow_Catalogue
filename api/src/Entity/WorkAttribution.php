@@ -40,11 +40,14 @@ class WorkAttribution
     /**
      * @var The work
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="attributions")
+     * @ontology-range &biflow;Work
      */
     public $work;
+
     /**
      * @var The attribution
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="attributedWorks")
+     * @ontology-range &biflow;Person
      */
     public $attribution;
     

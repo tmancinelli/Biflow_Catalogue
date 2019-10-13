@@ -13,6 +13,13 @@ use App\Validator\Constraints\RangeDate;
 /**
  * This is the Work class. The beginning of our world.
  *
+ * @ontology-comment This class comprises beginnings of evolutions of works.
+ * @ontology-comment An instance of F27 Work Conception marks the initiation of the creation of a work. The work, as an intellectual construction, evolves from this point on, until the last known expression of it. The instance of E39 Actor with which a work is associated through the chain of properties F1 Work R16i was initiated by F27 Work Conception P14 carried out by E39 Actor corresponds to the notion of the “creator” of the work. In the case of commissioned works, it is not the commissioning that is regarded as the work conception, but the acceptance of the commission.
+ * @ontology-comment This event does not always correlate with the date assigned in common library practice to the work, which is usually a later event (such as the date of completion of the first clean draft).
+ * @ontology-comment In addition, F27 Work Conception can serve to document the circumstances that surrounded the appearance of the original idea for a work, when these are known.
+ * @ontology-equivalentClass &efrbroo;F27_Work_Conception
+ * @ontology-subclassOf &current;E65_Creation
+ *
  * @ApiResource(
  *     collectionOperations={
  *         "get",
@@ -51,6 +58,7 @@ class Work
      * @var Author The author of this work
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
+     * @ontology-range &biflow;Person
      */
     public $author;
 
@@ -94,6 +102,7 @@ class Work
      * @var Editor The editor of this work
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Editor", inversedBy="works")
+     * @ontology-range &biflow;Editor
      */
     public $editor;
 
@@ -102,6 +111,7 @@ class Work
      *
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
+     * @ontology-range &biflow;Date
      */
     public $creationDate = "";
 

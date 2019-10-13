@@ -40,11 +40,14 @@ class ExpressionAttribution
     /**
      * @var The expression
      * @ORM\ManyToOne(targetEntity="Expression", inversedBy="attributions")
+     * @ontology-range &biflow;Expression
      */
     public $expression;
+
     /**
      * @var The attribution
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="attributedExpressions")
+     * @ontology-range &biflow;Person
      */
     public $attribution;
     

@@ -38,12 +38,14 @@ class WorkGenre
     /**
      * @var The work
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="genres")
+     * @ontology-range &biflow;Work
      */
     public $work;
 
     /**
      * @var The genre
      * @ORM\ManyToOne(targetEntity="Genre", inversedBy="works")
+     * @ontology-range &biflow;Genre
      */
     public $genre;
 
