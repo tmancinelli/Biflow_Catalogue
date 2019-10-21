@@ -12,6 +12,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * This is the Library class.
  *
+ * @ontology-comment This class defines a library which is the place where manuscripts are preserved.
+ * 
+ * @ontology-subClassOf &current;E53_Place
+ *
  * @ApiResource(
  *     collectionOperations={
  *         "get",
@@ -44,6 +48,10 @@ class Library
      *
      * @ORM\Column
      * @Assert\NotNull
+     * @ontology-comment The city where the library is located
+     * @ontology-equivalentProperty &current;P53i_is_former_or_current_location_of
+     * @ontology-range &current;E53_Place
+     * @ontology-name has_city
      */
     public $city;
 
@@ -52,6 +60,10 @@ class Library
      *
      * @ORM\Column
      * @Assert\NotNull
+     * @ontology-comment The library's name
+     * @ontology-equivalentProperty &current;P1_is_identified_by
+     * @ontology-range &current;E41_Appellation
+     * @ontology-name has_library_name
      */
     public $libraryName;
 
@@ -61,12 +73,19 @@ class Library
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
+     * @ontology-comment The library's code
+     * @ontology-equivalentProperty &current;P1_is_identified_by
+     * @ontology-range &current;E42_Identifier
+     * @ontology-name has_library_code
      */
     public $libraryCode;
 
     /**
      * @var Manuscripts the list of the manuscripts in this library
      * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="library")
+     * @ontology-range &biflow;Manuscript
+     * @ontology-name has_manuscript
+     * @ontology-comment The library preserves the manuscript
      */
     public $manuscripts;
     

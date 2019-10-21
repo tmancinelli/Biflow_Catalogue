@@ -8,7 +8,11 @@ foreach ($files as $file) {
 
   require_once('../api/src/Entity/' . $file);
   $className = explode(".", $file)[0];
-  $data[] = getClassData('App\Entity\\' . $className);
+  $classData = getClassData('App\Entity\\' . $className);
+
+  if ($classData != null) {
+    $data[] = $classData;
+  }
 }
 
 $content = generateRDF($data);
@@ -52,12 +56,22 @@ function getClassData($class) {
     $data["properties"][] = getPropertyData($property);
   }
 
+  if (isset($data["ignore"])) {
+    return null;
+  }
+
   return $data;
 }
 
 function getPropertyData($property) {
   $data = getGenericData($property->getDocComment());
-  $data["name"] = $property->getName();
+
+  if (!isset($data["name"])) {
+    $data["name"] = $property->getName();
+  } else if (is_array($data["name"])) {
+    $data["name"] = $data["name"][0];
+  }
+
   return $data;
 }
 
@@ -83,8 +97,8 @@ function generateRDF($data) {
       }
     }
 
-    if (isset($x["subclassOf"])) {
-      foreach($x['subclassOf'] as $sub) {
+    if (isset($x["subClassOf"])) {
+      foreach($x['subClassOf'] as $sub) {
         $c .="    <rdfs:subClassOf rdf:resource=\"" . $sub . "\" />\n";
       }
     }
@@ -97,7 +111,19 @@ function generateRDF($data) {
   foreach($data as $class) {
     foreach($class["properties"] as $x) {
       if (!isset($properties[$x["name"]])) {
-        $properties[$x["name"]] = $x;
+        $properties[$x["name"]] = Array();
+      }
+
+      foreach($x as $k => $v) {
+        if (!isset($properties[$x["name"]][$k])) {
+          $properties[$x["name"]][$k] = Array();
+        }
+
+        if (is_array($v)) {
+          $properties[$x["name"]][$k] = array_merge($properties[$x["name"]][$k], $v);
+        } else {
+          $properties[$x["name"]][$k][] = $v;
+        }
       }
 
       if (!isset($properties[$x["name"]]["domain"])) {
@@ -108,13 +134,13 @@ function generateRDF($data) {
     }
   }
 
-  foreach($properties as $x) {
-    $c .= "  <owl:ObjectProperty rdf:about=\"&biflow;" . $x['name'] . "\">\n";
+  foreach($properties as $name => $x) {
+    $c .= "  <owl:ObjectProperty rdf:about=\"&biflow;" . $name . "\">\n";
 
     if (isset($x["label"])) {
       $c .= "    <rdfs:label xml:lang=\"en\">" . implode("\n", $x["label"]) . "</rdfs:label>\n";
     } else {
-      $c .= "    <rdfs:label xml:lang=\"en\">" . $x["name"] . "</rdfs:label>\n";
+      $c .= "    <rdfs:label xml:lang=\"en\">" . $name . "</rdfs:label>\n";
     }
 
     if (isset($x["comment"])) {
@@ -135,9 +161,21 @@ function generateRDF($data) {
       }
     }
 
+    if (isset($x["inverseOf"])) {
+      foreach($x['inverseOf'] as $sub) {
+        $c .="    <rdfs:inverseOf rdf:resource=\"" . $sub . "\" />\n";
+      }
+    }
+
+    if (isset($x["equivalentProperty"])) {
+      foreach($x['equivalentProperty'] as $sub) {
+        $c .="    <owl:equivalentProperty rdf:resource=\"" . $sub . "\" />\n";
+      }
+    }
+
     if (isset($x["subPropertyOf"])) {
       foreach($x['subPropertyOf'] as $sub) {
-        $c .="    <rdfs:subPropertyOf rdf:resource=\"&biflow;" . $sub . "\" />\n";
+        $c .="    <rdfs:subPropertyOf rdf:resource=\"" . $sub . "\" />\n";
       }
     }
 

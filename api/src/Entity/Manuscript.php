@@ -12,7 +12,8 @@ use App\Validator\Constraints\RangeDate;
 
 /**
  * This is the Manuscript class.
- * @ontology-comment The manuscript is the document made in the Middle Ages for texts. 
+ * @ontology-comment The manuscript is the document made in the Middle Ages for texts.
+ *
  * @ApiResource(
  *     collectionOperations={
  *         "get",
@@ -24,8 +25,13 @@ use App\Validator\Constraints\RangeDate;
  *         "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
  *     }
  * )
+ *
  * @ORM\Entity
  * @UniqueEntity(fields={"library", "shelfMark"})
+ *
+ * @ontology-subClassOf &current;E84_Information_Carrier
+ * @ontology-equivalentClass &efrbroo;F4_Manifestation_Singleton
+ * @ontology-comment "This is the Manuscript Class
  */
 class Manuscript
 {
@@ -42,9 +48,11 @@ class Manuscript
      * @var The library whose the manuscript is preserved.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Library", inversedBy="manuscripts")
+     * @ontology-name has_current_library_location
      * @ontology-label The library whose the manuscript is preserved
      * @ontology-comment The name of the the library where the manuscript is preserved.
      * @ontology-range &biflow;Library
+     * @ontology-equivalentProperty &current;P55_has_current_location
      */
     public $library;
 
@@ -52,16 +60,20 @@ class Manuscript
      * @var The identifier number of the manuscript
      * @Assert\NotNull
      * @ORM\Column(type="text", options={"default":""})
+     * @ontology-name has_shelf_mark_identifier
      * @ontology-label The identifier number of the manuscript
      * @ontology-comment A shelf-mark, or shelfmark, in a manuscript in a library is, specifically, a press-mark that denotes where is located
+     * @ontology-equivalentProperty &current;P1_is_identified_by
+     * @ontology-range &current;E41_Appellation
      */
     public $shelfMark;
 
     /**
      * @var Information about the place expressed in the manuscript
      * @ORM\Column(type="text", options={"default":""})
-     * @ontology-label The place expressed in the manuscript
      * @ontology-comment The information written or expressed in the manuscript which denote the place where the manuscript was written
+     * @ontology-name has_place_expressed
+     * @ontology-range &current;E53_Place
      */
     public $place = '';
 
@@ -70,6 +82,7 @@ class Manuscript
      *
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
+     * @ontology-name has_date
      * @ontology-label The date of the manuscript
      * @ontology-comment The information about the dates related to the manuscript. This date can be expressed in the manuscript or supposed by scholars.
      * @ontology-range &biflow;Date
@@ -79,15 +92,18 @@ class Manuscript
     /**
      * @var material The material whose the manuscript is made.
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="manuscripts")
+     * @ontology-name has_material
      * @ontology-label The material whose the manuscript is made
      * @ontology-comment The material whose the manuscript is made.
      * @ontology-range &biflow;Material
+     * @ontology-equivalentProperty &current;P45_consists_of
      */
     public $material;
 
     /**
      * @var Futher information about the physical description
      * @ORM\Column(type="text", options={"default":""})
+     * @ontology-name has_physical_description
      * @ontology-label Futher information about the physical description.
      * @ontology-comment Futher information about the physical description.
      */
@@ -96,6 +112,7 @@ class Manuscript
     /**
      * @var Description of the history of the codex
      * @ORM\Column(type="text", options={"default":""})
+     * @ontology-name has_history
      * @ontology-label Description of the history of the codex.
      * @ontology-comment Description of the history of the codex.
      */
@@ -106,6 +123,9 @@ class Manuscript
      * @ORM\Column(type="float", options={"default":0})
      * @ontology-label The widht of the manuscript.
      * @ontology-comment The widht of the manuscript.
+     * @ontology-name has_dimension_width
+     * @ontology-equivalentProperty &current;P43_has_dimension
+     * @ontology-range &current;E54_Dimension
      */
     public $width=0;
 
@@ -114,6 +134,9 @@ class Manuscript
      * @ORM\Column(type="float", options={"default":0})
      * @ontology-label The height of the manuscript.
      * @ontology-comment The height of the manuscript.
+     * @ontology-name has_dimension_height
+     * @ontology-equivalentProperty &current;P43_has_dimension
+     * @ontology-range &current;E54_Dimension
      */
     public $height=0;
 
@@ -122,6 +145,8 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ontology-label Information about the script.
      * @ontology-comment Information about the script.
+     * @ontology-name has_script_description
+     * @ontology-range &current;E55_Type
      */
     public $scriptDescription = '';
 
@@ -130,6 +155,7 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ontology-label Futher information about the decoration descrition.
      * @ontology-comment Futher information about the decoration descrition.
+     * @ontology-name has_decoration_description
      */
     public $decoDescription = '';
 
@@ -138,6 +164,7 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ontology-label Description of this manuscript collation.
      * @ontology-comment Description of this manuscript collation.
+     * @ontology-name has_collation_description
      */
     public $collationDescription = '';
 
@@ -146,6 +173,8 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ontology-label Information about the binding description.
      * @ontology-comment Information about the binding description.
+     * @ontology-name has_binding_description
+     * @ontology-range &base;Binding
      */
     public $binding = '';
 
@@ -154,6 +183,7 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ontology-label Information about the ruling description.
      * @ontology-comment Information about the ruling description.
+     * @ontology-name has_ruled_lines
      */
     public $ruledLines = '';
 
@@ -164,6 +194,7 @@ class Manuscript
      * @ontology-label Intormation of how this manuscrpt was examined.
      * @ontology-comment Intormation of how this manuscrpt was examined.
      * @ontology-range &biflow;CheckStatus
+     * @ontology-name has_check_Status
      */
     public $checkStatus;
 
@@ -172,6 +203,8 @@ class Manuscript
      * @ORM\Column(type="text", options={"default":""})
      * @ontology-label the note of this manuscript.
      * @ontology-comment Further information about this manuscript.
+     * @ontology-name has_note
+     * @ontology-equivalentClass &current;P3_has_note
      */
     public $note = '';
 
@@ -181,6 +214,7 @@ class Manuscript
      * @ontology-label  The list of localisations for this manuscript.
      * @ontology-comment  The list of localisations for this manuscript.
      * @ontology-range &biflow;Localisation
+     * @ontology-name has_localization
      */
     public $localisations;
 
@@ -188,7 +222,6 @@ class Manuscript
         $this->localisations = new ArrayCollection();
     }
 
-  
     public function getId(): int
     {
         return $this->id;

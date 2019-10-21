@@ -15,6 +15,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ontology-equivalentClass &efrbroo;F10_Person
  * @ontology-equivalentClass &current;E21_Person
+ * @ontology-subClassOf &current;E39_Actor
+ *
  * @ApiResource(
  *     collectionOperations={
  *         "get",
@@ -46,6 +48,10 @@ class Person
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
+     * @ontology-name has_name
+     * @ontology-equivalentProperty &current;P131_is_identified_by
+     * @ontology-comment The name of the person
+     * @ontology-range &current;E82_Actor_Appellation
      */
     public $name;
 
@@ -55,6 +61,8 @@ class Person
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
      * @ontology-range &biflow;Date
+     * @ontology-name has_birth_date
+     * @ontology-comment The date of birth
      */
     public $dateBirth = "";
 
@@ -64,6 +72,8 @@ class Person
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
      * @ontology-range &biflow;Date
+     * @ontology-name has_death_date
+     * @ontology-comment The date of death
      */
     public $dateDeath = "";
 
@@ -71,18 +81,27 @@ class Person
      * @var Works[] Created works
      * 
      * @ORM\OneToMany(targetEntity="Work", mappedBy="author")
+     * @ontology-name is_author_of
+     * @ontology-range &biflow;Work
+     * @ontology-comment This person is the author of that work
      */
     public $works;
 
     /**
      * @var Attributed Works the list of the works attributed to this person
      * @ORM\OneToMany(targetEntity="WorkAttribution", mappedBy="attribution")
+     * @ontology-name has_been_considered_author_of
+     * @ontology-range &biflow;Work
+     * @ontology-comment This person has been considered the author of that work
      */
     public $attributedWorks;
 
     /**
      * @var Attributed Expressions the list of the expressions attributed to this person
      * @ORM\OneToMany(targetEntity="ExpressionAttribution", mappedBy="attribution")
+     * @ontology-name has_been_considered_author_of
+     * @ontology-range &biflow;Expression
+     * @ontology-comment This person has been considered the author of that expression
      */
     public $attributedExpressions;
 
@@ -90,6 +109,9 @@ class Person
      * @var Translations[] Translated expressions
      * 
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="translator")
+     * @ontology-name is_translator_of
+     * @ontology-range &biflow;Expression
+     * @ontology-comment This person is the translator of that expression
      */
     public $translations;
 
@@ -97,6 +119,9 @@ class Person
      * @var Codices[] Localisation codices
      * 
      * @ORM\OneToMany(targetEntity="Localisation", mappedBy="copyist")
+     * @ontology-name is_copyst_of
+     * @ontology-range &biflow;Localisation
+     * @ontology-comment This person is the copyst of the text
      */
     public $codices;
 
@@ -104,6 +129,10 @@ class Person
      * @var Nicknames[] the nicknames for this person
      *
      * @ORM\OneToMany(targetEntity="Nickname", mappedBy="person")
+     * @ontology-name has_nickname
+     * @ontology-equivalentProperty &current;P1_is_identified_by
+     * @ontology-range &current;E41_Appellation
+     * @ontology-comment The person is also known as
      */
     public $nicknames;
 

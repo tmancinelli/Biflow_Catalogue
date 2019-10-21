@@ -7,6 +7,7 @@
    <!ENTITY dc      "http://purl.org/dc/elements/1.1/" >
    <!ENTITY foaf    "http://xmlns.com/foaf/0.1/" >
    <!ENTITY owl     "http://www.w3.org/2002/07/owl#" >
+   <!ENTITY base    "https://w3id.org/bibma/" >
    <!ENTITY current "http://erlangen-crm.org/current/">
    <!ENTITY efrbroo "http://erlangen-crm.org/efrbroo/" >
    <!ENTITY xsd     "http://www.w3.org/2001/XMLSchema#" >
@@ -21,6 +22,7 @@
    xmlns:owl ="&owl;"
    xmlns:current ="&current;"
    xmlns:efrbroo ="&efrbroo;"
+   xmlns:base = "&base;"
    xmlns:xsd ="&xsd;"
 >
 
@@ -43,6 +45,12 @@
     <rdfs:label xml:lang="en">Date</rdfs:label>
     <rdfs:comment xml:lang="en">This is the rappresentation of a biflow date</rdfs:comment>
     <owl:equivalentClass rdf:resource="&current;E50_Date" />
+  </owl:Class>
+
+  <owl:Class rdf:about="&biflow;Identifier">
+    <rdfs:label xml:lang="en">Identifier</rdfs:label>
+    <rdfs:comment xml:lang="en">This is the rappresentation of a Biflow identifier</rdfs:comment>
+    <owl:equivalentClass rdf:resource="&efrbroo;F13_Identifier" />
   </owl:Class>
 
 {biflow.classes_and_properties}

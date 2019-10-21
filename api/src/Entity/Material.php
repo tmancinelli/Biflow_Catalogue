@@ -26,6 +26,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\Entity
  * @UniqueEntity("material")
+ *
+ * @ontology-subClassOf &current;E57_Material
  */
 class Material
 {
@@ -44,12 +46,17 @@ class Material
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
+     * @ontology-name has_material_identifier
+     * @ontology-equivalentProperty &current;P1_is_identified_by
      */
     public $material;
 
     /**
      * @var Manuscripts the list of the manuscripts for this material
      * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="material")
+     * @ontology-name is_material_of
+     * @ontology-range &biflow;Manuscript
+     * @ontology-inverseOf &biflow;has_material
      */
     public $manuscripts;
     

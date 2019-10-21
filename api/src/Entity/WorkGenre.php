@@ -23,6 +23,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\Entity
  * @UniqueEntity(fields={"genre", "work"})
+ * @ontology-ignore
  */
 class WorkGenre
 {

@@ -10,8 +10,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Material class.
- *
  * @ApiResource(
  *     collectionOperations={
  *         "get",

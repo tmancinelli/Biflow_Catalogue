@@ -45,6 +45,7 @@ class Expression
      * @ORM\Column(type="text", options={"default":""})
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
+     * @ontology-range &biflow;Identifier
      */
     public $code;
 

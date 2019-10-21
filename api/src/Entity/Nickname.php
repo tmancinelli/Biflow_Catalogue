@@ -25,6 +25,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     attributes={"order"={"nickname": "ASC"}}
  * )
  * @ORM\Entity
+ * @ontology-ignore
  */
 class Nickname
 {

@@ -25,6 +25,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\Entity
  * @UniqueEntity(fields={"attribution", "expression"})
+ * @ontology-ignore
  */
 class ExpressionAttribution
 {
