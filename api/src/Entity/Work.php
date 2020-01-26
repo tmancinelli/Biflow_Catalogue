@@ -157,6 +157,14 @@ class Work
      */
     public $bibliographies;
 
+    /**
+     * @var Published
+     *
+     * @ORM\Column(type="boolean", options={"default":false})
+     * -ontology-ignore
+     */
+    public $published = false;
+
     public function __construct() {
         $this->expressions = new ArrayCollection();
         $this->genres = new ArrayCollection();
