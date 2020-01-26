@@ -26,12 +26,12 @@ function getGenericData($comment) {
 
   $lines = explode("\n", $comment);
   foreach($lines as $line) {
-    $a = strpos($line, "@ontology-");
+    $a = strpos($line, "-ontology-");
     if ($a !== false) {
-      $v = trim(substr($line, $a + strlen("@ontology-")));
+      $v = trim(substr($line, $a + strlen("-ontology-")));
       $key = explode(" ", $v)[0];
 
-      $v = trim(substr($line, $a + strlen("@ontology-") + strlen($key)));
+      $v = trim(substr($line, $a + strlen("-ontology-") + strlen($key)));
 
       if (!isset($data[$key])) {
         $data[$key] = Array();

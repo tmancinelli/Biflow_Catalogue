@@ -25,7 +25,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\Entity
  * @UniqueEntity(fields={"attribution", "work"})
- * @ontology-ignore
+ * -ontology-ignore
  */
 class WorkAttribution
 {
@@ -41,14 +41,14 @@ class WorkAttribution
     /**
      * @var The work
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="attributions")
-     * @ontology-range &biflow;Work
+     * -ontology-range &biflow;Work
      */
     public $work;
 
     /**
      * @var The attribution
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="attributedWorks")
-     * @ontology-range &biflow;Person
+     * -ontology-range &biflow;Person
      */
     public $attribution;
     

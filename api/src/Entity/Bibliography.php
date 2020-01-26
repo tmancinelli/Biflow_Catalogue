@@ -93,7 +93,7 @@ class Bibliography
      * @var The date of this reference
      * @Assert\NotNull
      * @ORM\Column(type="integer")
-     * @ontology-range &biflow;Date
+     * -ontology-range &biflow;Date
      */
     public $date;
 
@@ -113,7 +113,7 @@ class Bibliography
      * @var codeBibl The code linked to the reference.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="CodeBibl", inversedBy="bibliographies")
-     * @ontology-range &biflow;CodeBibl
+     * -ontology-range &biflow;CodeBibl
      */
     public $codeBibl;
 

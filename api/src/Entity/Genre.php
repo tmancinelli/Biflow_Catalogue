@@ -49,7 +49,7 @@ class Genre
 
     /**
      * @var Works the list of the works for this genre
-     * @ORM\OneToMany(targetEntity="WorkGenre", mappedBy="genre")
+     * @ORM\ManyToMany(targetEntity="Work", mappedBy="genres")
      */
     public $works;
 

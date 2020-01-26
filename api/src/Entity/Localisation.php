@@ -51,7 +51,7 @@ class Localisation
      * @var the manuscript for this localisation
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Manuscript", inversedBy="localisations")
-     * @ontology-range &biflow;Manuscript
+     * -ontology-range &biflow;Manuscript
      */
     public $manuscript;
 
@@ -59,14 +59,14 @@ class Localisation
      * @var expression The expression this localisation of this manuscript belongs to.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Expression", inversedBy="localisations")
-     * @ontology-range &biflow;Expression
+     * -ontology-range &biflow;Expression
      */
     public $expression;
 
     /**
      * @var Copyist The copyist
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="codices")
-     * @ontology-range &biflow;Person
+     * -ontology-range &biflow;Person
      */
     public $copyist;
 
@@ -75,7 +75,7 @@ class Localisation
      *
      * @RangeDate
      * @ORM\Column(type="string", options={"default":""})
-     * @ontology-range &biflow;Date
+     * -ontology-range &biflow;Date
      */
     public $date = '';
 

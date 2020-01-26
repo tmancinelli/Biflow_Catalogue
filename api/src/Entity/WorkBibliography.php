@@ -23,7 +23,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * )
  * @ORM\Entity
  * @UniqueEntity(fields={"bibliography", "work"})
- * @ontology-ignore
+ * -ontology-ignore
  */
 class WorkBibliography
 {
@@ -39,14 +39,14 @@ class WorkBibliography
     /**
      * @var The work
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="bibliographies")
-     * @ontology-range &biflow;Work
+     * -ontology-range &biflow;Work
      */
     public $work;
 
     /**
      * @var The bibliography
      * @ORM\ManyToOne(targetEntity="Bibliography", inversedBy="works")
-     * @ontology-range &biflow;Bibliography
+     * -ontology-range &biflow;Bibliography
      */
     public $bibliography;
 
