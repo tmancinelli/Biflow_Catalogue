@@ -108,12 +108,8 @@ class Work
      * @ORM\ManyToMany(targetEntity="Genre", inversedBy="works")
      * @ORM\JoinTable(
      *  name="work_genre",
-     *  joinColumns={
-     *      @ORM\JoinColumn(name="work_id", referencedColumnName="id")
-     *  },
-     *  inverseJoinColumns={
-     *      @ORM\JoinColumn(name="genre_id", referencedColumnName="id")
-     *  }
+     *  joinColumns={@ORM\JoinColumn(name="work_id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="genre_id")}
      * )
      * -ontology-name has_genre
      * -ontology-range &biflow;Genre

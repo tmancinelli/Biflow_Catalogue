@@ -112,17 +112,21 @@ class Expression
     public $manuscriptTradition = '';
 
     /**
-     * @var derivedFrom Ogni traduzione deriva da una espressione precedente. Se questa non esiste, vuol dire che l'espressione e' la prima della 'catena di espressioni'. La possiamo vedere come la prima espressione di un lavoro, anche se possono esserci tante "prime" espressioni di un lavoro... (da espandere).
-     *
-     * @ORM\ManyToOne(targetEntity="Expression", inversedBy="derivedExpressions")
-     * -ontology-range &biflow;Expression
+     * @var the expressions from which this one is derived from.
+     * @var derivedFrom Ogni traduzione deriva da zero, una o più espressioni precedenti. Se queste non esistono, vuol dire che l'espressione e' la prima della 'catena di espressioni'. La possiamo vedere come la prima espressione di un lavoro, anche se possono esserci tante "prime" espressioni di un lavoro... (da espandere).
+     * @ORM\ManyToMany(targetEntity="Expression", inversedBy="derivedExpressions")
+     * @ORM\JoinTable(
+     *  name="expression_derived",
+     *  joinColumns={@ORM\JoinColumn(name="parent_id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="child_id") }
+     * )
      */
-    public $derivedFrom;
+    public $derivedFromExpressions;
 
     /**
      * @var derivedExpressions Expressions derived by this one.
      *
-     * @ORM\OneToMany(targetEntity="Expression", mappedBy="derivedFrom")
+     * @ORM\ManyToMany(targetEntity="Expression", mappedBy="derivedFromExpressions")
      */
     public $derivedExpressions;
 
@@ -161,6 +165,7 @@ class Expression
     */
     
     public function __construct() {
+        $this->derivedFromExpressions = new ArrayCollection();
         $this->derivedExpressions = new ArrayCollection();
         $this->localisations = new ArrayCollection();
         $this->editions = new ArrayCollection();
