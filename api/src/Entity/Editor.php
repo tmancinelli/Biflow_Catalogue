@@ -48,11 +48,17 @@ class Editor
     public $editor;
 
     /**
-     * @var Editors the list of the editors 
+     * @var Editors the list of the works
      * @ORM\OneToMany(targetEntity="Work", mappedBy="editor")
      */
     public $works;
-    
+
+    /**
+     * @var Editors the list of the manuscripts
+     * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="editor")
+     */
+    public $manuscripts;
+
     public function __construct() {
         $this->works = new ArrayCollection();
     }

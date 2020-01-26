@@ -38,7 +38,7 @@ class Bibliography
 
     /**
      * @var work The work this reference belongs to.
-     * @ORM\OneToMany(targetEntity="WorkBibliography", mappedBy="bibliography")
+     * @ORM\ManyToMany(targetEntity="Work", mappedBy="bibliographies")
      */
     public $works;
 

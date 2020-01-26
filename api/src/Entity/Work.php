@@ -150,7 +150,12 @@ class Work
 
     /**
      * @var The bibliography of this work
-     * @ORM\OneToMany(targetEntity="WorkBibliography", mappedBy="work")
+     * @ORM\ManyToMany(targetEntity="Bibliography", inversedBy="works")
+     * @ORM\JoinTable(
+     *  name="work_bibliography",
+     *  joinColumns={@ORM\JoinColumn(name="work_id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="bibliography_id")}
+     * )
      * -ontology-name has_bibliography
      * -ontology-range &biflow;Bibliography
      * -ontology-comment Has a bibliografy entry of this work

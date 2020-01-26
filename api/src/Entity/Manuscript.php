@@ -236,6 +236,17 @@ class Manuscript
      */
     public $localisations;
 
+    /**
+     * @var Editor The editor of this manuscript
+     * @Assert\NotNull
+     * @ORM\ManyToOne(targetEntity="Editor", inversedBy="manuscripts")
+     * -ontology-range &biflow;Editor
+     * -ontology-name has_been_created_by
+     * -ontology-comment The editor of this manuscript
+     * -ontology-subPropertyOf &current;P14_carried_out_by
+     */
+    public $editor;
+
     public function __construct() {
         $this->localisations = new ArrayCollection();
     }
