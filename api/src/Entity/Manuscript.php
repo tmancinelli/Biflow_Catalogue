@@ -188,6 +188,16 @@ class Manuscript
     public $ruledLines = '';
 
     /**
+     * @var ruled line technique
+     * @ORM\ManyToOne(targetEntity="RuledLineTechnique", inversedBy="manuscripts")
+     * -ontology-name has_ruled_line_technique
+     * -ontology-label The ruled line tecnique whose the manuscript is made
+     * -ontology-comment The ruled line tecnique whose the manuscript is made.
+     * -ontology-range &biflow;ruledLineTechnique
+     */
+    public $ruledLineTechnique;
+
+    /**
      * @var checked in loco, on internet or not yet checked.
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="CheckStatus", inversedBy="manuscripts")
