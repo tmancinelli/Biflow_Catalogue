@@ -43,6 +43,12 @@ class Bibliography
     public $works;
 
     /**
+     * @var manuscript The manuscript this reference belongs to.
+     * @ORM\ManyToMany(targetEntity="Manuscript", mappedBy="bibliographies")
+     */
+    public $manuscripts;
+
+    /**
      * @var The author of the reference.
      * @Assert\NotNull
      * @ORM\Column(type="text")
@@ -143,5 +149,6 @@ class Bibliography
 
     public function __construct() {
         $this->works = new ArrayCollection();
+        $this->manuscripts = new ArrayCollection();
     }
 }

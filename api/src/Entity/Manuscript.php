@@ -237,6 +237,20 @@ class Manuscript
     public $localisations;
 
     /**
+     * @var The bibliography of this manuscript
+     * @ORM\ManyToMany(targetEntity="Bibliography", inversedBy="manuscripts")
+     * @ORM\JoinTable(
+     *  name="manuscript_bibliography",
+     *  joinColumns={@ORM\JoinColumn(name="manuscript_id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="bibliography_id")}
+     * )
+     * -ontology-name has_bibliography
+     * -ontology-range &biflow;Bibliography
+     * -ontology-comment Has a bibliografy entry of this manuscript
+     */
+    public $bibliographies;
+
+    /**
      * @var Editor The editor of this manuscript
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Editor", inversedBy="manuscripts")
@@ -249,6 +263,7 @@ class Manuscript
 
     public function __construct() {
         $this->localisations = new ArrayCollection();
+        $this->bibliographies = new ArrayCollection();
     }
 
     public function getId(): int
