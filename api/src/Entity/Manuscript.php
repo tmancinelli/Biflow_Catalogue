@@ -219,6 +219,14 @@ class Manuscript
     public $note = '';
 
     /**
+     * @var Content the content of this manuscript
+     * @ORM\Column(type="text", options={"default":""})
+     * -ontology-label the content of this manuscript.
+     * -ontology-name has_content
+     */
+    public $content = '';
+
+    /**
      * @var Localisation the list of localisations for this manuscript
      * @ORM\OneToMany(targetEntity="Localisation", mappedBy="manuscript")
      * -ontology-label  The list of localisations for this manuscript.
