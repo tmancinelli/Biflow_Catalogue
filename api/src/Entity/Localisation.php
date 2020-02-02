@@ -44,6 +44,7 @@ class Localisation
      *
      * @ORM\Column
      * @Assert\NotNull
+     * @ApiProperty(iri="http://schema.org/name")
      */
     public $localisation;
 
