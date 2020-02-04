@@ -73,7 +73,7 @@ class Work
      * @var Other attributions for this work
      * @ORM\ManyToMany(targetEntity="Person", inversedBy="works")
      * @ORM\JoinTable(
-     *  name="Work_attribution",
+     *  name="work_attribution",
      *  joinColumns={@ORM\JoinColumn(name="work_id")},
      *  inverseJoinColumns={@ORM\JoinColumn(name="attribution_id")}
      * )

@@ -68,7 +68,7 @@ class Expression
      * @var Other attributions for this expression
      * @ORM\ManyToMany(targetEntity="Person", inversedBy="expressions")
      * @ORM\JoinTable(
-     *  name="Expression_attribution",
+     *  name="expression_attribution",
      *  joinColumns={@ORM\JoinColumn(name="expression_id")},
      *  inverseJoinColumns={@ORM\JoinColumn(name="attribution_id")}
      * )
