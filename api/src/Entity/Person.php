@@ -89,7 +89,7 @@ class Person
 
     /**
      * @var Attributed Works the list of the works attributed to this person
-     * @ORM\OneToMany(targetEntity="WorkAttribution", mappedBy="attribution")
+     * @ORM\ManyToMany(targetEntity="Work", mappedBy="attributions")
      * -ontology-name has_been_considered_author_of
      * -ontology-range &biflow;Work
      * -ontology-comment This person has been considered the author of that work
@@ -98,7 +98,7 @@ class Person
 
     /**
      * @var Attributed Expressions the list of the expressions attributed to this person
-     * @ORM\OneToMany(targetEntity="ExpressionAttribution", mappedBy="attribution")
+     * @ORM\ManyToMany(targetEntity="Expression", mappedBy="attributions")
      * -ontology-name has_been_considered_author_of
      * -ontology-range &biflow;Expression
      * -ontology-comment This person has been considered the author of that expression

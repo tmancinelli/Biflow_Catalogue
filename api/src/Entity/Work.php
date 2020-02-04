@@ -71,7 +71,12 @@ class Work
 
     /**
      * @var Other attributions for this work
-     * @ORM\OneToMany(targetEntity="WorkAttribution", mappedBy="work")
+     * @ORM\ManyToMany(targetEntity="Person", inversedBy="works")
+     * @ORM\JoinTable(
+     *  name="Work_attribution",
+     *  joinColumns={@ORM\JoinColumn(name="work_id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="attribution_id")}
+     * )
      * -ontology-name has_been_attributed_to
      * -ontology-comment Different author for this work whois been attributed to
      * -ontology-range &biflow;Person
