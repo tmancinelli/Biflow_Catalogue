@@ -69,6 +69,16 @@ class Manuscript
     public $shelfMark;
 
     /**
+     * @var typology The typology of this manuscript.
+     * @ORM\ManyToOne(targetEntity="Typology", inversedBy="manuscripts")
+     * -ontology-name has_typology
+     * -ontology-label The typology of this manuscript
+     * -ontology-comment The typology of this manuscript.
+     * -ontology-range &biflow;Typology
+     */
+    public $typology;
+
+    /**
      * @var Information about the place expressed in the manuscript
      * @ORM\Column(type="text", options={"default":""})
      * -ontology-comment The information written or expressed in the manuscript which denote the place where the manuscript was written
@@ -252,7 +262,6 @@ class Manuscript
 
     /**
      * @var Editor The editor of this manuscript
-     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Editor", inversedBy="manuscripts")
      * -ontology-range &biflow;Editor
      * -ontology-name has_been_created_by
