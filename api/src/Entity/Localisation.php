@@ -50,7 +50,6 @@ class Localisation
 
     /**
      * @var the manuscript for this localisation
-     * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Manuscript", inversedBy="localisations")
      * -ontology-range &biflow;Manuscript
      */
