@@ -220,6 +220,15 @@ class Manuscript
     public $checkStatus;
 
     /**
+     * @var link to a online source
+     * @ORM\Column(type="text", options={"default":""})
+     * -ontology-name has_link
+     * -ontology-label URL to a online source.
+     * -ontology-comment URL to a facsimile online.
+     */
+    public $link = '';
+
+    /**
      * @var Note the note of this manuscript
      * @ORM\Column(type="text", options={"default":""})
      * -ontology-label the note of this manuscript.
