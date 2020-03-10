@@ -36,6 +36,15 @@ class Bibliography
      */
     private $id;
 
+     /**
+     * @var string The codeBibl
+     *
+     * @ORM\Column
+     * @Assert\NotNull
+     * @ApiProperty(iri="http://schema.org/name")
+     */
+    public $codeBibl;
+
     /**
      * @var work The work this reference belongs to.
      * @ORM\ManyToMany(targetEntity="Work", mappedBy="bibliographies")
@@ -60,7 +69,6 @@ class Bibliography
      *
      * @ORM\Column
      * @Assert\NotNull
-     * @ApiProperty(iri="http://schema.org/name")
      */
     public $title;
 
@@ -114,14 +122,6 @@ class Bibliography
      * @ORM\Column(type="text", options={"default":""})
      */
     public $journal = '';
-
-    /**
-     * @var codeBibl The code linked to the reference.
-     * @Assert\NotNull
-     * @ORM\ManyToOne(targetEntity="CodeBibl", inversedBy="bibliographies")
-     * -ontology-range &biflow;CodeBibl
-     */
-    public $codeBibl;
 
     /**
      * @var The issue of this journal
