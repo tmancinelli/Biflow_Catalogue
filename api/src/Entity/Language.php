@@ -53,8 +53,15 @@ class Language
      */
     public $expressions;
 
+    /**
+     * @var expressions The list of expressions with multi-language texts.
+     * @ORM\ManyToMany(targetEntity="Expression", mappedBy="otherLanguages")
+     */
+    public $otherExpressions;
+
     public function __construct() {
         $this->expressions = new ArrayCollection();
+        $this->otherExpressions = new ArrayCollection();
     }
 
     public function getId(): int

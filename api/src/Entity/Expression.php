@@ -158,6 +158,19 @@ class Expression
     public $language;
 
     /**
+     * @var Other languages included in the text.
+     * @ORM\ManyToMany(targetEntity="Language", inversedBy="otherExpressions")
+     * @ORM\JoinTable(
+     *  name="expression_language",
+     *  joinColumns={@ORM\JoinColumn(name="expression_id")},
+     *  inverseJoinColumns={@ORM\JoinColumn(name="language_id")}
+     * )
+     * -ontology-name has_other_languages
+     * -ontology-range &biflow;Otherlanguages
+     */
+    public $otherLanguages;
+
+    /**
      * @var Localisations[] localisation of this manuscript
      * 
      * @ORM\OneToMany(targetEntity="Localisation", mappedBy="expression")
@@ -175,6 +188,7 @@ class Expression
         $this->localisations = new ArrayCollection();
         $this->editions = new ArrayCollection();
         $this->attributions = new ArrayCollection();
+        $this->otherLanguages = new ArrayCollection();
     }
 
     public function getId(): int
