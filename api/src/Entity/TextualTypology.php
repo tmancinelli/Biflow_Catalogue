@@ -42,12 +42,14 @@ class TextualTypology
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
+     * -ontology-name textual_typology
      */
     public $textualTypology;
 
     /**
      * @var Expressions the list of the expressions for this textual typology
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="textualTypology")
+     * -ontology-range &biflow;Expression
      */
     public $expressions;
     

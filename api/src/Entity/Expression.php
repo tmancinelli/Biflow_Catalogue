@@ -125,6 +125,8 @@ class Expression
      *  joinColumns={@ORM\JoinColumn(name="parent_id")},
      *  inverseJoinColumns={@ORM\JoinColumn(name="child_id") }
      * )
+     * -ontology-name is_derived_from
+     * -ontology-range &biflow;Expression
      */
     public $derivedFromExpressions;
 
@@ -132,6 +134,8 @@ class Expression
      * @var derivedExpressions Expressions derived by this one.
      *
      * @ORM\ManyToMany(targetEntity="Expression", mappedBy="derivedFromExpressions")
+     * -ontology-name derives_from
+     * -ontology-range &biflow;Expression
      */
     public $derivedExpressions;
 
@@ -145,6 +149,7 @@ class Expression
      * @var textualTypology whose the text is written.
      *
      * @ORM\ManyToOne(targetEntity="TextualTypology", inversedBy="expressions")
+     * -ontology-name textual_typology
      * -ontology-range &biflow;TextualTypology
      */
     public $textualTypology;
@@ -174,6 +179,7 @@ class Expression
      * @var Localisations[] localisation of this manuscript
      * 
      * @ORM\OneToMany(targetEntity="Localisation", mappedBy="expression")
+     * -ontology-range &biflow;Localisation
      */
     public $localisations;
 

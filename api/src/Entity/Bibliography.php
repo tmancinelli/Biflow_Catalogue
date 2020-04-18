@@ -48,6 +48,9 @@ class Bibliography
     /**
      * @var work The work this reference belongs to.
      * @ORM\ManyToMany(targetEntity="Work", mappedBy="bibliographies")
+     * -ontology-name is_bibliography_of
+     * -ontology-range &biflow;Work
+     * -ontology-comment This bibliography is used for that work
      */
     public $works;
 

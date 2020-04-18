@@ -50,12 +50,16 @@ class Editor
     /**
      * @var Editors the list of the works
      * @ORM\OneToMany(targetEntity="Work", mappedBy="editor")
+     * -ontology-name is_editor_of_work
+     * -ontology-range &biflow;Work
      */
     public $works;
 
     /**
      * @var Editors the list of the manuscripts
      * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="editor")
+     * -ontology-name is_editor_of_manuscript
+     * -ontology-range &biflow;Manuscript
      */
     public $manuscripts;
 

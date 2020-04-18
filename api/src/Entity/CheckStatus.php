@@ -51,6 +51,8 @@ class CheckStatus
      * @var Manuscripts the list of the manuscripts for this check status
      * @ORM\OneToMany(targetEntity="Manuscript", mappedBy="checkStatus")
      * -ontology-inverseOf &biflow;checkStatus
+     * -ontology-name is_check_status_of
+     * -ontology-range &biflow;Manuscript
      */
     public $manuscripts;
     

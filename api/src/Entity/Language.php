@@ -50,12 +50,14 @@ class Language
     /**
      * @var expressions The list of expressions of this tradition.
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="language")
+     * -ontology-range &biflow;Expression
      */
     public $expressions;
 
     /**
      * @var expressions The list of expressions with multi-language texts.
      * @ORM\ManyToMany(targetEntity="Expression", mappedBy="otherLanguages")
+     * -ontology-range &biflow;Expression
      */
     public $otherExpressions;
 
