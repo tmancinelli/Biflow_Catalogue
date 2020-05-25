@@ -71,7 +71,6 @@ class Manuscript
     /**
      * @var typology The typology of this manuscript.
      * @ORM\ManyToOne(targetEntity="Typology", inversedBy="manuscripts")
-     * @Assert\NotNull
      * -ontology-name has_typology
      * -ontology-label The typology of this manuscript
      * -ontology-comment The typology of this manuscript.
