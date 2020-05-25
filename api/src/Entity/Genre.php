@@ -50,6 +50,9 @@ class Genre
     /**
      * @var Works the list of the works for this genre
      * @ORM\ManyToMany(targetEntity="Work", mappedBy="genres")
+     * -ontology-name is_genre_of
+     * -ontology-range &biflow;Work
+     * -ontology-comment This genre is used for that work
      */
     public $works;
 

@@ -133,6 +133,7 @@ class Person
      * -ontology-equivalentProperty &current;P1_is_identified_by
      * -ontology-range &current;E41_Appellation
      * -ontology-comment The person is also known as
+     * -ontology-include nickname
      */
     public $nicknames;
 
