@@ -10,7 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Language class. The language of a Expression.
+ * This is the Language class. It defines the language used in a version of a text.
+ * This class comprises the natural languages in the sense of concepts. It describes the definition of the language introduced by the editor and a more general codes, such as those defined in ISO 639:1988. 
+ * ontology-equivalentClass current:E56_Language
  *
  * @ApiResource(
  *     collectionOperations={

@@ -15,6 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * -ontology-equivalentClass &efrbroo;F10_Person
  * -ontology-equivalentClass &current;E21_Person
+ * -ontology-equivalentClass &foaf:Person
  * -ontology-subClassOf &current;E39_Actor
  *
  * @ApiResource(
@@ -79,7 +80,7 @@ class Person
 
     /**
      * @var Works[] Created works
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Work", mappedBy="author")
      * -ontology-name is_author_of
      * -ontology-range &biflow;Work
@@ -107,7 +108,7 @@ class Person
 
     /**
      * @var Translations[] Translated expressions
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="translator")
      * -ontology-name is_translator_of
      * -ontology-range &biflow;Expression
@@ -117,7 +118,7 @@ class Person
 
     /**
      * @var Codices[] Localisation codices
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Localisation", mappedBy="copyist")
      * -ontology-name is_copyst_of
      * -ontology-range &biflow;Localisation

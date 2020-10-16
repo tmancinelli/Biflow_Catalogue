@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * This is the Genre class.
+ * This is the Genre class. A literary genre is a particular type or style of literature that a scholar can recognise according to its peculiarities and features
  *
  * @ApiResource(
  *     collectionOperations={

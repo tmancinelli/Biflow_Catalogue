@@ -11,14 +11,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use App\Validator\Constraints\RangeDate;
 
 /**
- * This is the Work class. The beginning of our world.
+ * This is the Work class. This class comprises distinct concepts or combinations of concepts identified in artistic and intellectual expressions, such as poems, stories or musical compositions. Such concepts may appear in the course of the coherent evolution of an original idea into one or more expressions that are dominated by the original idea. A Work may be elaborated by one or more Actors simultaneously or over time. The substance of Work is ideas. A Work may have members that are works in their own right.
  *
- * -ontology-comment This class comprises beginnings of evolutions of works.
- * -ontology-comment An instance of F27 Work Conception marks the initiation of the creation of a work. The work, as an intellectual construction, evolves from this point on, until the last known expression of it. The instance of E39 Actor with which a work is associated through the chain of properties F1 Work R16i was initiated by F27 Work Conception P14 carried out by E39 Actor corresponds to the notion of the “creator” of the work. In the case of commissioned works, it is not the commissioning that is regarded as the work conception, but the acceptance of the commission.
- * -ontology-comment This event does not always correlate with the date assigned in common library practice to the work, which is usually a later event (such as the date of completion of the first clean draft).
- * -ontology-comment In addition, F27 Work Conception can serve to document the circumstances that surrounded the appearance of the original idea for a work, when these are known.
- * -ontology-equivalentClass &efrbroo;F27_Work_Conception
- * -ontology-subClassOf &current;E65_Creation
+ * -ontology-equivalentClass &efrbroo;/F1_Work
+ * -ontology-subClassOf 
  *
  * @ApiResource(
  *     collectionOperations={
@@ -47,7 +43,7 @@ class Work
     private $id;
 
     /**
-     * @var string The code of this work
+     * @var string The Biflow code created to this work
      * @ORM\Column
      * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/name")
@@ -59,13 +55,13 @@ class Work
     public $code = '';
 
     /**
-     * @var Author The author of this work
+     * @var Author The author of this work. 
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
      * -ontology-range &biflow;Person
      * -ontology-name has_author
-     * -ontology-comment The author who created this work
-     * -ontology-subPropertyOf &current;P14_carried_out_by
+     * -ontology-comment The author who created this work. 
+     * -ontology-equivalentProperty &current;P94i_was_created_by
      */
     public $author;
 
@@ -78,9 +74,9 @@ class Work
      *  inverseJoinColumns={@ORM\JoinColumn(name="attribution_id")}
      * )
      * -ontology-name has_been_attributed_to
-     * -ontology-comment Different author for this work whois been attributed to
+     * -ontology-comment statements of responsibility are expressed though knowledge creation of a work
      * -ontology-range &biflow;Person
-     * -ontology-subPropertyOf &current;P14_carried_out_by
+     * -ontology-equivalentProperty &current;P140_assigned_attribute_to
      */
     public $attributions;
 
@@ -125,9 +121,9 @@ class Work
      * @var Expressions the list of the expressions for this work
      * @ORM\OneToMany(targetEntity="Expression", mappedBy="work")
      * -ontology-inverseOf &biflow;work
-     * -ontology-name has_expression
+     * -ontology-name has_representative_expression
      * -ontology-range &biflow;Expression
-     * -ontology-comment The expression that belongs to this work
+     * -ontology-comment This property identifies an instance of F22 Self-Contained Expression that has been chosen as the most characteristic expression of the instance of F1 Work of which it is an expression. There is no other semantic implication to this notion of being characteristic than to be an adequate candidate to uniquely identify the Work realized by it. Prototypically, this is the instance of F22 Self-Contained Expression that is deemed characteristic of an instance of F15 Complex Work.
      */
     public $expressions;
 
@@ -149,7 +145,7 @@ class Work
      * @ORM\Column(type="string", options={"default":""})
      * -ontology-range &biflow;Date
      * -ontology-name has_creation_date
-     * -ontology-comment The creation date of this work by the editor
+     * -ontology-comment The creation date of the dossier by the editor
      */
     public $creationDate = "";
 
