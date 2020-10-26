@@ -122,6 +122,12 @@ class Publication
      */
     public $url = '';
 
+    /**
+     * @var category The categories of the pubblications
+     * @ORM\ManyToOne(targetEntity="PublicationCategory", inversedBy="publications")
+     */
+    public $category;
+
     public function getId(): int
     {
         return $this->id;
