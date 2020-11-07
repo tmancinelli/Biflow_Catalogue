@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * -ontology-equivalentClass &efrbroo;F10_Person
  * -ontology-equivalentClass &current;E21_Person
- * -ontology-equivalentClass &foaf:Person
+ * -ontology-equivalentClass &foaf;Person
  * -ontology-subClassOf &current;E39_Actor
  *
  * @ApiResource(
