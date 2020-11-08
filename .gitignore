@@ -10,3 +10,7 @@
 ###< symfony/framework-bundle ###
 .env
 config/packages/security.yaml
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
