@@ -123,6 +123,12 @@ class Publication
     public $url = '';
 
     /**
+     * @var Abstract of this reference.
+     * @ORM\Column(type="text", options={"default":""})
+     */
+    public $abstract = '';
+
+    /**
      * @var category The categories of the pubblications
      * @ORM\ManyToOne(targetEntity="PublicationCategory", inversedBy="publications")
      */
