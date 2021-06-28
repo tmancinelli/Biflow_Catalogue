@@ -12,7 +12,7 @@ use App\Validator\Constraints\RangeDate;
 
 /**
  * This is the Manuscript class.
- * -ontology-comment The manuscript is the document made in the Middle Ages for texts.
+ * -ontology-comment The manuscript class refers to the document made in the Middle Ages for texts.
  *
  * @ApiResource(
  *     collectionOperations={
@@ -111,7 +111,7 @@ class Manuscript
     public $material;
 
     /**
-     * @var Futher information about the physical description
+     * @var Futher information about the physical description of the document
      * @ORM\Column(type="text", options={"default":""})
      * -ontology-name has_physical_description
      * -ontology-label Futher information about the physical description.

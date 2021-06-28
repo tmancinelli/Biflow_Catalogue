@@ -55,6 +55,16 @@ class Work
     public $code = '';
 
     /**
+     * @var string The external reference: wikidata - viaf
+     *
+     * @ORM\Column
+     * @Assert\NotNull
+     * @ApiProperty(iri="http://schema.org/url")
+     * -ontology-absolutename owl:sameAs
+     */
+    public $externalReference = "";
+
+    /**
      * @var Author The author of this work. 
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="works")
