@@ -58,7 +58,6 @@ class Work
      * @var string The external reference: wikidata - viaf
      *
      * @ORM\Column
-     * @Assert\NotNull
      * @ApiProperty(iri="http://schema.org/url")
      * -ontology-absolutename owl:sameAs
      */
